@@ -26,5 +26,6 @@ public class BuildingWorkerFarm2 : BuildingWorker
             playerResources.Gold += generateGoldPerSecond;
             startTime = Time.time;
         }
+        SelectionUpdate();
     }
 }

@@ -78,11 +78,11 @@ public class BuildingSpawner : MonoBehaviour {
                      
                         Destroy(holdBuilding);
                         //Debug.Log("Before level increased.");
-                        if (level < 3)
+                       /* if (level < 3)
                         {
                             //Debug.Log("Level increased.");
                             level++;
-                        }
+                        }*/
                         currentlyBuilding = false;
                         //Debug.Log("Building spawned.");
                     }
