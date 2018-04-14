@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114893009436097972}
   - component: {fileID: 135393742423381626}
   - component: {fileID: 54280320095595246}
-  - component: {fileID: 114254557012270676}
   m_Layer: 8
   m_Name: farm_house_lvl2
   m_TagString: Building
@@ -119,17 +118,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114254557012270676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1740870460373336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 297cb4e0154d1b14489b783928320e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114893009436097972
 MonoBehaviour:
   m_ObjectHideFlags: 1

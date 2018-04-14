@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class InGameMenu : MonoBehaviour {
 
     private GameObject menu;
@@ -31,6 +31,6 @@ public class InGameMenu : MonoBehaviour {
     }
     public void BackToMenu()
     {
-        Application.LoadLevel("menu");
+        SceneManager.LoadScene("menu");
     }
 }

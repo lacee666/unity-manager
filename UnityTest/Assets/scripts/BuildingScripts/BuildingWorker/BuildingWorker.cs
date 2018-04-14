@@ -10,13 +10,14 @@ public class BuildingWorker : MonoBehaviour
     protected bool selected = false;
     protected Renderer renderer;
     protected Material material;
+    public static string selectionOutlineShaderName = "TSF/BaseOutline1";
     public bool Selected
     {
         get { return selected; }
         set { selected = value; }
     }
 
-    public static int cost;
+    public int cost;
 
     public int Cost
     {
@@ -38,6 +39,7 @@ public class BuildingWorker : MonoBehaviour
     {
         if (selected)
         {
+            Debug.Log("Selected rendering...");
             OnSelection();
         }
         else
@@ -47,7 +49,7 @@ public class BuildingWorker : MonoBehaviour
     }
     public void OnSelection()
     {
-        renderer.material.shader = Shader.Find("Outlined/Custom Camera Independent");
+        renderer.material.shader = Shader.Find(selectionOutlineShaderName);
     }
     public void Deselect()
     {

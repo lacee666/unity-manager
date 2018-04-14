@@ -1693,6 +1693,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1229143469}
+--- !u!1 &1346102481 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1829272864192424, guid: e3fdc4200313b5e43973175595f50a82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1751857515}
+--- !u!114 &1346102486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346102481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b412a9a4628cd4b98648c3245a5baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1391414532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,13 +1739,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildings:
   - name: farm_house_lvl1
+    cost: 0
     prefab: {fileID: 1303170574090388, guid: 21d42ff46295d4a4da6da6d0d1b33631, type: 2}
   - name: farm_house_lvl2
+    cost: 0
     prefab: {fileID: 1740870460373336, guid: 65ead04d94056194d871a15a66397d18, type: 2}
   - name: farm_house_lvl3
+    cost: 0
     prefab: {fileID: 1838615087933094, guid: 01d8db7f314b2504284646720569ebee, type: 2}
   - name: farm_house_lvl4
+    cost: 0
     prefab: {fileID: 1284534867303558, guid: 1f434b7092c98b9498412a8ed230d22d, type: 2}
+  - name: tower_lvl1
+    cost: 0
+    prefab: {fileID: 1058440869475206, guid: 5a0564be916f44248bc20e6c25a796ce, type: 2}
+  - name: tower_lvl2
+    cost: 0
+    prefab: {fileID: 1610616614341638, guid: afa55699f228cf2438920a8d9af4cd6b, type: 2}
+  - name: tower_lvl3
+    cost: 0
+    prefab: {fileID: 1319839184525736, guid: 4be703f0d1af24046be6c443f26fdb76, type: 2}
+  - name: tower_lvl4
+    cost: 0
+    prefab: {fileID: 1854227555480934, guid: 37e529ea4624e3b46a8e325e0288c883, type: 2}
 --- !u!4 &1391414534
 Transform:
   m_ObjectHideFlags: 0
@@ -1916,11 +1948,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4109978864101082, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.723
+      value: 1.715
       objectReference: {fileID: 0}
     - target: {fileID: 4109978864101082, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 4109978864101082, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1946,7 +1978,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1829272864192424, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829272864192424, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114603625580561492, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e3fdc4200313b5e43973175595f50a82, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1787589405
@@ -2113,13 +2154,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1829087631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -32.15}
+  m_LocalRotation: {x: 0.17037947, y: -0.000000029802322, z: -0, w: 0.9853785}
+  m_LocalPosition: {x: 0.0000052452087, y: 24.100021, z: 3.8000546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1698183472}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.62, y: 0, z: 0}
 --- !u!1 &1864022895
 GameObject:
   m_ObjectHideFlags: 0

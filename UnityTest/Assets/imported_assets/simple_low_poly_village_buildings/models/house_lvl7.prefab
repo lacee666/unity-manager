@@ -22,6 +22,11 @@ GameObject:
   - component: {fileID: 33683378825198272}
   - component: {fileID: 23547881525324402}
   - component: {fileID: 95311731040993008}
+  - component: {fileID: 54069078689749792}
+  - component: {fileID: 135938457307035126}
+  - component: {fileID: 65219708499487828}
+  - component: {fileID: 114724941856392366}
+  - component: {fileID: 114603625580561492}
   m_Layer: 0
   m_Name: house_lvl7
   m_TagString: Untagged
@@ -83,6 +88,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829272864192424}
   m_Mesh: {fileID: 4300000, guid: f727ded922603934b962032566006696, type: 3}
+--- !u!54 &54069078689749792
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829272864192424}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65219708499487828
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829272864192424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5587647, y: 0.7134757, z: 0.4856558}
+  m_Center: {x: 0.030099347, y: 0.35673785, z: 0.025252417}
 --- !u!95 &95311731040993008
 Animator:
   serializedVersion: 3
@@ -100,3 +132,37 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114603625580561492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829272864192424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297cb4e0154d1b14489b783928320e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114724941856392366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829272864192424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fd39b77b3f3074aa972f3b888bc609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &135938457307035126
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829272864192424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35673785
+  m_Center: {x: 0.030099347, y: 0.35673785, z: 0.025252417}

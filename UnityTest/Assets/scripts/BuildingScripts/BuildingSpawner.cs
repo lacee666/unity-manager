@@ -10,8 +10,9 @@ public class BuildingSpawner : MonoBehaviour {
     private bool currentlyBuilding = false;
     private GameObject holdBuilding;
     private string[] farmNames = { "farm_house_lvl1", "farm_house_lvl2", "farm_house_lvl3", "farm_house_lvl4" };
-    private int level = 0;
+    private string[] towerNames = { "tower_lvl1", "tower_lvl2", "tower_lvl3", "tower_lvl4" };
     public LayerMask buildingMask = 8;
+    private int buildingType = 0;
     // Use this for initialization
     void Start () {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
@@ -28,7 +29,7 @@ public class BuildingSpawner : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                building = buildingInformation.Find(farmNames[level]);
+                building = buildingInformation.Find(farmNames[playerResources.farmLevel]);
                 if (building != null)
                 {
 
@@ -41,15 +42,29 @@ public class BuildingSpawner : MonoBehaviour {
                         //Debug.Log("Before: " + hit.collider.gameObject.name);
                         if (hit.collider.gameObject.name.Equals("Ground"))
                         {
-                            holdBuilding = Instantiate(building.prefab, hit.point, Quaternion.identity) as GameObject;
-                            holdBuilding.GetComponent<Renderer>().material.color = Color.green;
-                            holdBuilding.GetComponent<BuildingStats>().CanSpawn = true;
-                            holdBuilding.GetComponent<SphereCollider>().isTrigger = true;
-                           
-                            //holdBuilding.GetComponent<Renderer>().material.color = Color.red;
-                            currentlyBuilding = true;
-                            Debug.Log("Building found");
+                            buildingType = 1;
+                            SpawnHolder(hit);
+                        }
+                    }
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                building = buildingInformation.Find(towerNames[playerResources.towerLevel]);
+                if (building != null)
+                {
 
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit = new RaycastHit();
+
+                    //excluding buildings so we hit the ground
+                    if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
+                    {
+                        //Debug.Log("Before: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.name.Equals("Ground"))
+                        {
+                            buildingType = 2;
+                            SpawnHolder(hit);
                         }
                     }
                 }
@@ -65,26 +80,32 @@ public class BuildingSpawner : MonoBehaviour {
                 RaycastHit hit = new RaycastHit();
                 if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
                 {
-                    //Debug.Log(holdBuilding.GetComponent<BuildingStats>().CanSpawn);
-                    //Debug.Log(hit.collider.gameObject.name);
-                    int cost = FarmCost(level);
+
+                    int cost = BuildingCosts.FarmCost(playerResources.farmLevel);
                     Debug.Log("Cost is: " + cost);
                     if (hit.collider.gameObject.name.Equals("Ground") && holdBuilding.GetComponent<BuildingStats>().CanSpawn && playerResources.Gold >= cost)
                     {
                         GameObject buildingTemp = Instantiate(building.prefab, hit.point, Quaternion.identity) as GameObject;
                         playerResources.Gold -= cost;
-                        Spawn(buildingTemp);
+                        if(buildingType == 1)
+                        {
+                            Spawn(buildingTemp);
+                        }else if(buildingType == 2)
+                        {
+                            SpawnTower(buildingTemp);
+                        }
+                        
                         
                      
                         Destroy(holdBuilding);
-                        //Debug.Log("Before level increased.");
-                       /* if (level < 3)
+
+                        if (playerResources.farmLevel < 3)
                         {
-                            //Debug.Log("Level increased.");
-                            level++;
-                        }*/
+
+                            playerResources.farmLevel++;
+                        }
                         currentlyBuilding = false;
-                        //Debug.Log("Building spawned.");
+
                     }
                     
                    
@@ -121,34 +142,11 @@ public class BuildingSpawner : MonoBehaviour {
         }
         
     }
-    int FarmCost(int level)
-    {
-        switch (level)
-        {
-            case 0:
-                {
-                    return BuildingWorkerFarm1.cost;
-                }
-            case 1:
-                {
-                    return BuildingWorkerFarm2.cost;
-                }
-            case 2:
-                {
-
-                    return BuildingWorkerFarm3.cost;
-                }
-            case 3:
-                {
-                    return BuildingWorkerFarm4.cost;
-                }
-            default: return 10000;
-        }
-    }
+    
     void Spawn(GameObject buildingTemp)
     {
         
-        switch (level)
+        switch (playerResources.farmLevel)
         {
             case 0:
                 {
@@ -175,5 +173,48 @@ public class BuildingSpawner : MonoBehaviour {
         buildingTemp.AddComponent<BoxCollider>().enabled = true;
         buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
         Destroy(buildingTemp.GetComponent<BuildingStats>());
+    }
+    void SpawnTower(GameObject buildingTemp)
+    {
+
+        switch (playerResources.farmLevel)
+        {
+            case 0:
+                {
+                    buildingTemp.AddComponent<BuildingWorkerFarm1>().enabled = true;
+                    break;
+                }
+            case 1:
+                {
+                    buildingTemp.AddComponent<BuildingWorkerFarm2>().enabled = true;
+                    break;
+                }
+            case 2:
+                {
+                    buildingTemp.AddComponent<BuildingWorkerFarm3>().enabled = true;
+                    break;
+                }
+            case 3:
+                {
+                    buildingTemp.AddComponent<BuildingWorkerFarm4>().enabled = true;
+                    break;
+                }
+            default: break;
+        }
+        buildingTemp.AddComponent<BoxCollider>().enabled = true;
+        buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+        Destroy(buildingTemp.GetComponent<BuildingStats>());
+    }
+    void SpawnHolder(RaycastHit hit)
+    {
+        holdBuilding = Instantiate(building.prefab, hit.point, Quaternion.identity) as GameObject;
+        holdBuilding.GetComponent<Renderer>().material.color = Color.green;
+        holdBuilding.GetComponent<BuildingStats>().CanSpawn = true;
+        holdBuilding.GetComponent<SphereCollider>().isTrigger = true;
+
+        //holdBuilding.GetComponent<Renderer>().material.color = Color.red;
+        currentlyBuilding = true;
+
+        Debug.Log("Building found");
     }
 }

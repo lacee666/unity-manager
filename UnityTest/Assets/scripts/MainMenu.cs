@@ -19,17 +19,4 @@ public class MainMenu : MonoBehaviour {
     public void Exit() {
         Application.Quit();
     }
-    /*
-    public void KeyBoard()
-    {
-        main.SetActive(false);
-        options.SetActive(true);
-    }
-
-    public void BackToMenu()
-    {
-        main.SetActive(true);
-        options.SetActive(false);
-    }
-    */
 }

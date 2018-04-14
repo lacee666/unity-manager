@@ -22,9 +22,12 @@ GameObject:
   - component: {fileID: 33120532571652772}
   - component: {fileID: 23441316620008506}
   - component: {fileID: 95436787046891418}
-  m_Layer: 0
+  - component: {fileID: 65346144740189138}
+  - component: {fileID: 135994389236007026}
+  - component: {fileID: 114935265454513464}
+  m_Layer: 8
   m_Name: tower_lvl1
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058440869475206}
   m_Mesh: {fileID: 4300000, guid: d9cc2664702761e4e84869872ec27d9c, type: 3}
+--- !u!65 &65346144740189138
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058440869475206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19999999, y: 0.49964905, z: 0.20094886}
+  m_Center: {x: -0.0019032322, y: 0.24982452, z: -0.018700741}
 --- !u!95 &95436787046891418
 Animator:
   serializedVersion: 3
@@ -100,3 +115,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114935265454513464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058440869475206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fd39b77b3f3074aa972f3b888bc609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &135994389236007026
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058440869475206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24982452
+  m_Center: {x: -0.0019032322, y: 0.24982452, z: -0.018700741}

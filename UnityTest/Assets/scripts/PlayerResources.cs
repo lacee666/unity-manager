@@ -8,6 +8,8 @@ public class PlayerResources : MonoBehaviour {
     private int steel = 10;
     private int capacity = 0;
     private int maxCapacity = 10;
+    public int farmLevel = 0;
+    public int towerLevel = 0;
     public int Gold
     {
         get { return gold; }
