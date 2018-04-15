@@ -1,33 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
 public class BuildingSelection : MonoBehaviour {
 
     public LayerMask buildingMask = 8;
+    // this will be the selected building
     private GameObject focus;
+    //
+    private GameObject uiHolder;
+    private GameObject buildingInformationUI;
+    private PlayerResources playerResources;
     // Use this for initialization
     void Start () {
-		
-	}
+        playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
+        buildingInformationUI = GameObject.Find("buildingInformationUI");
+        buildingInformationUI.SetActive(false);
+
+        //
+        //buildingInformationUI = Resources.Load("buildingInformationUI", typeof(GameObject)) as GameObject;
+    }
 	
-	// Update is called once per frame
 	void LateUpdate () {
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
-
+            //Debug.Log("Mouse click on: ");
             if (Physics.Raycast(ray, out hit, 1000.0f, (1 << buildingMask.value)))
             {
-                
+               // Debug.Log("Mouse click on building: ");
                 if (hit.collider.gameObject.tag.Equals("Building"))
                 {
-
+                    //Debug.Log("Mouse click on building and tag: ");
                     focus = hit.collider.gameObject;
-                    focus.GetComponent<BuildingWorker>().Selected = true;
-                    focus.GetComponent<BuildingWorker>().SelectionUpdate();
-
+                    int cost = 0;
+                    if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
+                    {
+                        cost = BuildingCosts.FarmUpgradeCost();
+                        focus.GetComponent<BuildingWorker>().Selected = true;
+                        focus.GetComponent<BuildingWorker>().SelectionUpdate();
+                    }
+                    else if (focus.GetComponent<BaseBuilding>() is BuildingTower)
+                    {
+                        cost = BuildingCosts.TowerUpgradeCost();
+                        focus.GetComponent<BuildingTower>().Selected = true;
+                        focus.GetComponent<BuildingTower>().SelectionUpdate();
+                    }
+                   
+                    PopupUI();
+                   
+                   
+                    GameObject.Find("upgrade_text").GetComponent<TextMeshProUGUI>().SetText("Upgrade: " + cost);
+                    //Debug.Log(focus.gameObject.name);
+                    
                 }
             }
             else
@@ -35,23 +63,105 @@ public class BuildingSelection : MonoBehaviour {
 
                 if (focus != null)
                 {
-                    //Debug.Log("Deselected building");
-                    focus.GetComponent<BuildingWorker>().Selected = false;
-                    focus.GetComponent<BuildingWorker>().SelectionUpdate();
+                    if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
+                    {
+
+                        focus.GetComponent<BuildingWorker>().Selected = false;
+                        focus.GetComponent<BuildingWorker>().SelectionUpdate();
+
+                    }
+                    else if (focus.GetComponent<BaseBuilding>() is BuildingTower)
+                    {
+
+                        focus.GetComponent<BuildingTower>().Selected = false;
+                        focus.GetComponent<BuildingTower>().SelectionUpdate();
+                    }
+
                 }
 
             }
-            return;
+        
         }
-        else if(!Input.GetKeyUp(KeyCode.Mouse1) && Input.anyKey)
+        
+        else if(Input.GetKeyUp(KeyCode.Tab))
         {
             if (focus != null)
             {
-
-                focus.GetComponent<BuildingWorker>().Selected = false;
-                focus.GetComponent<BuildingWorker>().SelectionUpdate();
+                if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
+                {
+  
+                    focus.GetComponent<BuildingWorker>().Selected = false;
+                    focus.GetComponent<BuildingWorker>().SelectionUpdate();
+                    
+                }
+                else if (focus.GetComponent<BaseBuilding>() is BuildingTower)
+                {
+                    
+                    focus.GetComponent<BuildingTower>().Selected = false;
+                    focus.GetComponent<BuildingTower>().SelectionUpdate();                 
+                }
+              
+                DeleteUI();
             }
         }
+        if(focus != null && buildingInformationUI != null)
+        {
+            buildingInformationUI.transform.position = Camera.main.WorldToScreenPoint(focus.transform.position);
+        }
+    }
+    public void PopupUI()
+    {
+        buildingInformationUI.transform.position = Camera.main.WorldToScreenPoint(focus.transform.position);
+        buildingInformationUI.SetActive(true);
+
+        //uiHolder = Instantiate(buildingInformationUI);
+        //uiHolder.transform.parent = (GameObject.Find("Canvas").transform);
+        //GameObject.Find("buildingInformationUI/upgrade").GetComponent<Button>().onClick.AddListener(() => OnUpgrade());
+        //GameObject.Find("buildingInformationUI/destroy").GetComponent<Button>().onClick.AddListener(() => OnDestroy());
+        //buildingInformationUI.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { OnUpgrade(); });
+        //buildingInformationUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate{ OnDestroy(); });
+    }
+    public void DeleteUI()
+    {
+        if (buildingInformationUI != null)
+        {
+            buildingInformationUI.SetActive(false);
+        }      
     }
 
+    public void OnUpgrade()
+    {
+        Debug.Log("Upgrading...");
+        if(focus != null)
+        {
+            if(focus.GetComponent<BaseBuilding>() is BuildingWorker)
+            {
+                Debug.Log("Upgrading BW...");
+                if (playerResources.Gold >= BuildingCosts.FarmUpgradeCost())
+                {
+                    playerResources.Gold -= BuildingCosts.FarmUpgradeCost();
+                    focus.GetComponent<BuildingWorker>().Upgrade();
+                    DeleteUI();
+                }
+            } else if(focus.GetComponent<BaseBuilding>() is BuildingTower)
+            {
+                Debug.Log("Upgrading BT...");
+                if (playerResources.Gold >= BuildingCosts.TowerUpgradeCost())
+                {
+                    playerResources.Gold -= BuildingCosts.TowerUpgradeCost();
+                    focus.GetComponent<BuildingTower>().Upgrade();
+                    DeleteUI();
+                }
+            }
+        }
+       
+        
+    }
+
+    public void OnDestroy()
+    {
+        playerResources.Gold += 10;
+        Destroy(focus);
+        DeleteUI();
+    }
 }

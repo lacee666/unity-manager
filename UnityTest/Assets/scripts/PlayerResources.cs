@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerResources : MonoBehaviour {
 
-    private int gold = 100;
+    private int gold = 10000;
     private int steel = 10;
     private int capacity = 0;
     private int maxCapacity = 10;

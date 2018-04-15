@@ -82,7 +82,7 @@ public class BuildingSpawner : MonoBehaviour {
                 {
 
                     int cost = BuildingCosts.FarmCost(playerResources.farmLevel);
-                    Debug.Log("Cost is: " + cost);
+                    //Debug.Log("Cost is: " + cost);
                     if (hit.collider.gameObject.name.Equals("Ground") && holdBuilding.GetComponent<BuildingStats>().CanSpawn && playerResources.Gold >= cost)
                     {
                         GameObject buildingTemp = Instantiate(building.prefab, hit.point, Quaternion.identity) as GameObject;
@@ -172,37 +172,39 @@ public class BuildingSpawner : MonoBehaviour {
         }
         buildingTemp.AddComponent<BoxCollider>().enabled = true;
         buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+       
         Destroy(buildingTemp.GetComponent<BuildingStats>());
     }
     void SpawnTower(GameObject buildingTemp)
     {
 
-        switch (playerResources.farmLevel)
+        switch (playerResources.towerLevel)
         {
             case 0:
                 {
-                    buildingTemp.AddComponent<BuildingWorkerFarm1>().enabled = true;
+                    buildingTemp.AddComponent<BuildingTower1>().enabled = true;
                     break;
                 }
             case 1:
                 {
-                    buildingTemp.AddComponent<BuildingWorkerFarm2>().enabled = true;
+                    buildingTemp.AddComponent<BuildingTower2>().enabled = true;
                     break;
                 }
             case 2:
                 {
-                    buildingTemp.AddComponent<BuildingWorkerFarm3>().enabled = true;
+                    buildingTemp.AddComponent<BuildingTower3>().enabled = true;
                     break;
                 }
             case 3:
                 {
-                    buildingTemp.AddComponent<BuildingWorkerFarm4>().enabled = true;
+                    buildingTemp.AddComponent<BuildingTower4>().enabled = true;
                     break;
                 }
             default: break;
         }
         buildingTemp.AddComponent<BoxCollider>().enabled = true;
         buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+        buildingTemp.GetComponent<SphereCollider>().radius = 2.0f;
         Destroy(buildingTemp.GetComponent<BuildingStats>());
     }
     void SpawnHolder(RaycastHit hit)
@@ -215,6 +217,6 @@ public class BuildingSpawner : MonoBehaviour {
         //holdBuilding.GetComponent<Renderer>().material.color = Color.red;
         currentlyBuilding = true;
 
-        Debug.Log("Building found");
+        //Debug.Log("Building found");
     }
 }

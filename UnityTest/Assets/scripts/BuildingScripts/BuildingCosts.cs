@@ -28,7 +28,14 @@ public static class BuildingCosts {
             default: return 10000;
         }
     }
-
+    public static int FarmUpgradeCost()
+    {
+        return 40;
+    }
+    public static int TowerUpgradeCost()
+    {
+        return 50;
+    }
     public static int TowerCost(int level)
     {
         switch (level)

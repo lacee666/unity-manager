@@ -6,15 +6,7 @@ public class BuildingInformation : MonoBehaviour {
 
     [SerializeField]
     public Building[] buildings;
-	// Use this for initialization
-	void Start () {
-       
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     public Building Find(string name)
     {

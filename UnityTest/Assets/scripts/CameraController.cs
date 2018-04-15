@@ -42,6 +42,7 @@ public class CameraController : MonoBehaviour {
         }
         //Debug.Log(Input.mousePosition);
         acceleration = 1.0f;
+        this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, -15.0f, 15.0f),transform.position.y, Mathf.Clamp(transform.position.z, -20.0f, 11.0f));
     }
 
     private void Move(Vector3 direction)

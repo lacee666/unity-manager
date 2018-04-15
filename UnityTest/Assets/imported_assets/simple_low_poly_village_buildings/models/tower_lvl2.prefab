@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33381473564909734}
   - component: {fileID: 23007252137751284}
   - component: {fileID: 95077335145870196}
-  - component: {fileID: 65655688956742696}
   - component: {fileID: 135318967917605050}
   - component: {fileID: 114060713904849134}
+  - component: {fileID: 54473092134771676}
   m_Layer: 8
   m_Name: tower_lvl2
   m_TagString: Building
@@ -86,18 +86,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610616614341638}
   m_Mesh: {fileID: 4300000, guid: 262a6ed0126b60642bb6bc7ddddbf99c, type: 3}
---- !u!65 &65655688956742696
-BoxCollider:
+--- !u!54 &54473092134771676
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610616614341638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.23560745, y: 0.5249757, z: 0.24649036}
-  m_Center: {x: -0.002054762, y: 0.25556532, z: 0.0070362426}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95077335145870196
 Animator:
   serializedVersion: 3
