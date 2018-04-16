@@ -129,34 +129,37 @@ public class BuildingSpawner : MonoBehaviour {
     void Spawn(GameObject buildingTemp)
     {
         int cost = 0;
+        cost = BuildingCosts.FarmCost(playerResources.farmLevel);
+        
         switch (playerResources.farmLevel)
         {
             case 0:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm1>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingWorkerFarm1>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm1>().Cost;
                     break;
                 }
             case 1:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm2>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingWorkerFarm2>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm2>().Cost;
                     break;
                 }
             case 2:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm3>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingWorkerFarm3>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm3>().Cost;
                     break;
                 }
             case 3:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm4>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingWorkerFarm4>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm4>().Cost;
                     break;
                 }
             default: break;
         }
+        
         if (playerResources.Gold >= cost)
         {
             playerResources.Gold -= cost;
@@ -174,35 +177,37 @@ public class BuildingSpawner : MonoBehaviour {
     void SpawnTower(GameObject buildingTemp)
     {
         int cost = 0;
+        cost = BuildingCosts.TowerCost(playerResources.towerLevel);
+        
         switch (playerResources.towerLevel)
         {
             case 0:
                 {
                     buildingTemp.AddComponent<BuildingTower1>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingTower1>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingTower1>().Cost;
                     break;
                 }
             case 1:
                 {
                     buildingTemp.AddComponent<BuildingTower2>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingTower2>().Cost;
+                    // cost = buildingTemp.GetComponent<BuildingTower2>().Cost;
                     break;
                 }
             case 2:
                 {
                     buildingTemp.AddComponent<BuildingTower3>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingTower3>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingTower3>().Cost;
                     break;
                 }
             case 3:
                 {
                     buildingTemp.AddComponent<BuildingTower4>().enabled = true;
-                    cost = buildingTemp.GetComponent<BuildingTower4>().Cost;
+                   // cost = buildingTemp.GetComponent<BuildingTower4>().Cost;
                     break;
                 }
             default: break;
         }
-
+        
         if (playerResources.Gold >= cost)
         {
             playerResources.Gold -= cost;
