@@ -10,6 +10,11 @@ public class BuildingWorker : BaseBuilding
     protected Material material;
     public static string selectionOutlineShaderName = "TSF/BaseOutline1";
     protected float secondsOfUpdate = 3.0f;
+    protected  int level = 0;
+    public  int Level
+    {
+        get { return level;}
+    }
     protected bool selected = false;
     public bool Selected
     {
@@ -17,8 +22,8 @@ public class BuildingWorker : BaseBuilding
         set { selected = value; }
     }
 
-    public int cost;
-    public int Cost
+    protected  int cost = 50;
+    public  int Cost
     {
         get { return cost; }
     }

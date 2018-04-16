@@ -6,4 +6,9 @@ public class Building{
     public string name;
     public int cost;
     public Object prefab;
+    protected int level = 0;
+    public int Level
+    {
+        get { return level; }
+    }
 }

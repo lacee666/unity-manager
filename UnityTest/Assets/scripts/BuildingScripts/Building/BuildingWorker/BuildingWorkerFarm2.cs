@@ -9,7 +9,8 @@ public class BuildingWorkerFarm2 : BuildingWorker
     // Use this for initialization
     void Start()
     {
-        cost = 20;
+        level = 1;
+        cost = 70;
         startTime = Time.time;
         generateGoldPerSecond = 2;
 

@@ -11,14 +11,23 @@ public class BuildingTower : BaseBuilding {
     public static string selectionOutlineShaderName = "TSF/BaseOutline1";
     protected float secondsOfUpdate;
     protected bool selected = false;
+    protected bool attacking = true;
+    protected float attackPower;
+   
+    protected float attackTime = 0.0f;
+    protected  int level = 0;
+    public  int Level
+    {
+        get { return level; }
+    }
     public bool Selected
     {
         get { return selected; }
         set { selected = value; }
     }
 
-    public int cost;
-    public int Cost
+    protected  int cost = 100;
+    public  int Cost
     {
         get { return cost; }
     }

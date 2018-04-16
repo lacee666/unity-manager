@@ -7,7 +7,8 @@ public class BuildingWorkerFarm1 : BuildingWorker {
     private float startTime;
 	// Use this for initialization
 	void Start () {
-        cost = 10;
+        level = 0;
+        cost = 40;
         startTime = Time.time;
         generateGoldPerSecond = 1;
 

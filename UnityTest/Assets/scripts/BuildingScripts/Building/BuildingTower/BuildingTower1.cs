@@ -5,33 +5,47 @@ using UnityEngine;
 
 public class BuildingTower1 : BuildingTower {
 
-    private float startTime;
-    private float attackTime = 0.0f;
-    private bool attacking = true;
+
+    private List<GameObject> enemies;
     void Start()
     {
-        cost = 20;
-        startTime = Time.time;
-
-        
+        enemies = new List<GameObject>();
+        GameObject[] list = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < list.Length; i++)
+        {
+            enemies.Add(list[i]);
+        }
+        level = 0;
+        cost = 50;
+        attackPower = 40;     
     }
 
     void Update()
     {
-        float elapsedTime = Time.time - startTime;
-
-        if (elapsedTime >= secondsOfUpdate)
-        {
-
-            startTime = Time.time;
-        }
         if (attacking)
         {
             attackTime -= Time.deltaTime;
+            AttackEnemy();
         }
-        Debug.Log(attackTime);
+        
     }
-
+    public void AttackEnemy()
+    {
+        if (attackTime <= 0.0f)
+        {
+            System.Random rnd = new System.Random();
+            int r = rnd.Next(enemies.Count);
+            GameObject enemy = enemies[r];
+ 
+            if(Vector3.Distance(this.transform.position, enemy.transform.position) < 2.0f)
+            {
+                attacking = true;      
+                Debug.Log("Can attack");
+                Attack(enemy);
+                attackTime = 1.0f;      
+            }
+        }
+    }
     public override void Upgrade()
     {
         BuildingInformation bi = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>();
@@ -42,20 +56,18 @@ public class BuildingTower1 : BuildingTower {
         Destroy(this.gameObject);
     }
 
-    public virtual void Attack(GameObject enemy)
+    public override void Attack(GameObject enemy)
     {
-        EnemyHealth enemyHealth;
+        EnemyHealth enemyHealth = enemy.GetComponentInChildren<EnemyHealth>(); ;
 
-        //GameObject go = Instantiate();
-        Debug.Log("Attacking");
-        enemyHealth = enemy.GetComponentInChildren<EnemyHealth>();
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.position = this.transform.position + new Vector3(0, 0.9f, 0);
         sphere.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         sphere.AddComponent<Rigidbody>().AddForce((enemy.transform.position - this.transform.position).normalized * 450.0f);
         Destroy(sphere, 2.0f);
-        enemyHealth.GetDamage(150.0f);
+        enemyHealth.GetDamage(attackPower);
     }
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Enemy"))
@@ -77,4 +89,5 @@ public class BuildingTower1 : BuildingTower {
 
         }
     }
+    */
 }

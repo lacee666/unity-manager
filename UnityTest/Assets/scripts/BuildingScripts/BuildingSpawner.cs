@@ -32,7 +32,6 @@ public class BuildingSpawner : MonoBehaviour {
                 building = buildingInformation.Find(farmNames[playerResources.farmLevel]);
                 if (building != null)
                 {
-
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit = new RaycastHit();
 
@@ -72,47 +71,33 @@ public class BuildingSpawner : MonoBehaviour {
         }
         else
         {
-            FollowMouse();
+            if(holdBuilding != null)
+            {
+                FollowMouse();
+            }
+            
             if (Input.GetMouseButtonDown(0))
             {
-
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
                 if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
-                {
-
-                    int cost = BuildingCosts.FarmCost(playerResources.farmLevel);
-                    //Debug.Log("Cost is: " + cost);
-                    if (hit.collider.gameObject.name.Equals("Ground") && holdBuilding.GetComponent<BuildingStats>().CanSpawn && playerResources.Gold >= cost)
+                {                                                   
+                    if (hit.collider.gameObject.name.Equals("Ground") && holdBuilding.GetComponent<BuildingStats>().CanSpawn)
                     {
                         GameObject buildingTemp = Instantiate(building.prefab, hit.point, Quaternion.identity) as GameObject;
-                        playerResources.Gold -= cost;
+                       
                         if(buildingType == 1)
                         {
                             Spawn(buildingTemp);
                         }else if(buildingType == 2)
                         {
                             SpawnTower(buildingTemp);
-                        }
-                        
-                        
+                        }                                             
                      
                         Destroy(holdBuilding);
-
-                        if (playerResources.farmLevel < 3)
-                        {
-
-                            playerResources.farmLevel++;
-                        }
                         currentlyBuilding = false;
-
-                    }
-                    
-                   
-                }
-              
-                
-                
+                    }                                     
+                }                                         
             }
             if (Input.GetKeyDown(KeyCode.Tab))
             {
@@ -121,13 +106,11 @@ public class BuildingSpawner : MonoBehaviour {
                     Destroy(holdBuilding);
                 }
                 currentlyBuilding = false;
-                //Debug.Log("Cancelled building.");
             }
-        }
-      //  Debug.Log(level);
-		
+        }		
 	}
 
+ 
     //the building following the mouse
     void FollowMouse()
     {
@@ -145,67 +128,95 @@ public class BuildingSpawner : MonoBehaviour {
     
     void Spawn(GameObject buildingTemp)
     {
-        
+        int cost = 0;
         switch (playerResources.farmLevel)
         {
             case 0:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm1>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingWorkerFarm1>().Cost;
                     break;
                 }
             case 1:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm2>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingWorkerFarm2>().Cost;
                     break;
                 }
             case 2:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm3>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingWorkerFarm3>().Cost;
                     break;
                 }
             case 3:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm4>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingWorkerFarm4>().Cost;
                     break;
                 }
             default: break;
         }
-        buildingTemp.AddComponent<BoxCollider>().enabled = true;
-        buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
-       
-        Destroy(buildingTemp.GetComponent<BuildingStats>());
+        if (playerResources.Gold >= cost)
+        {
+            playerResources.Gold -= cost;
+            buildingTemp.AddComponent<BoxCollider>().enabled = true;
+            buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            Destroy(buildingTemp.GetComponent<BuildingStats>());
+        }
+        else
+        {
+            Destroy(buildingTemp);
+
+        }
+        
     }
     void SpawnTower(GameObject buildingTemp)
     {
-
+        int cost = 0;
         switch (playerResources.towerLevel)
         {
             case 0:
                 {
                     buildingTemp.AddComponent<BuildingTower1>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingTower1>().Cost;
                     break;
                 }
             case 1:
                 {
                     buildingTemp.AddComponent<BuildingTower2>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingTower2>().Cost;
                     break;
                 }
             case 2:
                 {
                     buildingTemp.AddComponent<BuildingTower3>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingTower3>().Cost;
                     break;
                 }
             case 3:
                 {
                     buildingTemp.AddComponent<BuildingTower4>().enabled = true;
+                    cost = buildingTemp.GetComponent<BuildingTower4>().Cost;
                     break;
                 }
             default: break;
         }
-        buildingTemp.AddComponent<BoxCollider>().enabled = true;
-        buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
-        buildingTemp.GetComponent<SphereCollider>().radius = 2.0f;
-        Destroy(buildingTemp.GetComponent<BuildingStats>());
+
+        if (playerResources.Gold >= cost)
+        {
+            playerResources.Gold -= cost;
+            buildingTemp.AddComponent<BoxCollider>().enabled = true;
+            buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            buildingTemp.GetComponent<SphereCollider>().radius = 2.0f;
+            Destroy(buildingTemp.GetComponent<BuildingStats>());
+        }
+        else
+        {
+            Destroy(buildingTemp);
+        }
+             
+        
     }
     void SpawnHolder(RaycastHit hit)
     {
