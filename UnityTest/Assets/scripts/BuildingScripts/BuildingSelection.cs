@@ -9,18 +9,18 @@ public class BuildingSelection : MonoBehaviour {
     public LayerMask buildingMask = 8;
     // this will be the selected building
     private GameObject focus;
-    //
+
+    // not in use
     private GameObject uiHolder;
+
     private GameObject buildingInformationUI;
     private PlayerResources playerResources;
-    // Use this for initialization
+
     void Start () {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
+        // buildingInformationUI = Resources.Load("buildingInformationUI", typeof(GameObject)) as GameObject;
         buildingInformationUI = GameObject.Find("buildingInformationUI");
-        buildingInformationUI.SetActive(false);
-
-        //
-        //buildingInformationUI = Resources.Load("buildingInformationUI", typeof(GameObject)) as GameObject;
+        buildingInformationUI.SetActive(false);       
     }
 	
 	void LateUpdate () {
@@ -28,28 +28,39 @@ public class BuildingSelection : MonoBehaviour {
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
-            //Debug.Log("Mouse click on: ");
-            if (Physics.Raycast(ray, out hit, 1000.0f, (1 << buildingMask.value)))
+            Debug.Log("Mouse click happened at: " + ray);
+            if (Physics.Raycast(ray, out hit, 1500.0f, (1 << buildingMask.value)))
             {
-               // Debug.Log("Mouse click on building: ");
+                Debug.Log("Mouse click on building: " + hit.collider.gameObject.name);
                 if (hit.collider.gameObject.tag.Equals("Building"))
                 {
-                    //Debug.Log("Mouse click on building and tag: ");
+                    Debug.Log("Mouse click on building and tag: ");
+                    Debug.Log("OBJ name: " + hit.collider.gameObject);
+                   /* if(focus != hit.collider.gameObject)
+                    {
+                         Debug.Log("NEW OBJ name: " + hit.collider.gameObject);
+                         DeleteUI();
+                    }*/
                     focus = hit.collider.gameObject;
-                    int cost = 0;
+
+
+                    /*
                     if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
                     {
                         cost = BuildingCosts.FarmUpgradeCost();
-                        focus.GetComponent<BuildingWorker>().Selected = true;
-                        focus.GetComponent<BuildingWorker>().SelectionUpdate();
+                       // focus.GetComponent<BuildingWorker>().Selected = true;
+                        //focus.GetComponent<BuildingWorker>().SelectionUpdate();
                     }
                     else if (focus.GetComponent<BaseBuilding>() is BuildingTower)
                     {
                         cost = BuildingCosts.TowerUpgradeCost();
-                        focus.GetComponent<BuildingTower>().Selected = true;
-                        focus.GetComponent<BuildingTower>().SelectionUpdate();
+                       // focus.GetComponent<BuildingTower>().Selected = true;
+                       // focus.GetComponent<BuildingTower>().SelectionUpdate();
                     }
-                   
+                    */
+                    int cost = focus.GetComponent<BaseBuilding>().Cost;
+                    focus.GetComponent<BaseBuilding>().Selected = true;
+                    focus.GetComponent<BaseBuilding>().SelectionUpdate();
                     PopupUI();
                    
                    
@@ -63,6 +74,7 @@ public class BuildingSelection : MonoBehaviour {
 
                 if (focus != null)
                 {
+                    /*
                     if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
                     {
 
@@ -76,7 +88,9 @@ public class BuildingSelection : MonoBehaviour {
                         focus.GetComponent<BuildingTower>().Selected = false;
                         focus.GetComponent<BuildingTower>().SelectionUpdate();
                     }
-
+                    */
+                    focus.GetComponent<BaseBuilding>().Selected = false;
+                    focus.GetComponent<BaseBuilding>().SelectionUpdate();
                 }
 
             }

@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AIBehaviour : MonoBehaviour {
 
+    private Animator animator;
     private GameObject destination;
     NavMeshAgent navMeshAgent;
 	// Use this for initialization
 	void Start () {
-
+        animator = this.GetComponent<Animator>();
         destination = GameObject.Find("Capital_Hall");
         navMeshAgent = this.GetComponent<NavMeshAgent>();
 
@@ -22,11 +23,15 @@ public class AIBehaviour : MonoBehaviour {
             SetDestination();
         }
 	}
-
+    private void Update()
+    {
+       //animator.Play()
+    }
     private void SetDestination()
     {
-         if(destination != null)
+        if(destination != null)
         {
+            
             navMeshAgent.SetDestination(destination.transform.position);
         }
     }

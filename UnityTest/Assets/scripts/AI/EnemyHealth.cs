@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class EnemyHealth : MonoBehaviour {
 
 
@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour {
 	private float armor = 2f;
     private float maxHealth = 1600f;
     private float currentHealth;
-	
+    private AIHolder aiHolder;
 
 
 	public float CurrentHealth{
@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour {
 	void Start () {
         currentHealth = maxHealth;
         camera = Camera.main.transform;
-
+        aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
 		//image = this.GetComponent<Image> ();
 
 	}
@@ -36,6 +36,7 @@ public class EnemyHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentHealth <= 0) {
+            aiHolder.enemies.Remove(this.transform.parent.gameObject);
 			Destroy (this.transform.root.gameObject);
 		}
 	}
@@ -55,16 +56,18 @@ public class EnemyHealth : MonoBehaviour {
 	public void CreateMessage(string message){
 		GameObject newText = new GameObject(message.Replace(" ", "-"));
 
-		var newTextComp = newText.AddComponent<Text>();
+		var newTextComp = newText.AddComponent<TextMeshProUGUI>();
 		newText.GetComponent<RectTransform> ().anchoredPosition.Set(0f, 0f);
 		newText.GetComponent<RectTransform> ().sizeDelta.Set(0f,0f);
 		newText.GetComponent<RectTransform> ().Rotate (new Vector3 (0, 0, 0));
 		newText.GetComponent<RectTransform> ().localScale.Set (1f, 1f, 1f);
 		newTextComp.text = message;
-		newTextComp.fontStyle = FontStyle.Bold;
-		newTextComp.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
-		newTextComp.color = Color.yellow;
+        newTextComp.color = Color.yellow;
+        /*
+        newTextComp.fontStyle = FontStyle.Bold;
+		newTextComp.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");		
 		newTextComp.alignment = TextAnchor.MiddleCenter;
+        */
 		newTextComp.fontSize = 1;
 		newText.GetComponent<RectTransform> ().position = this.transform.position + new Vector3 (0, 1, 0);
 		//newText.GetComponent<RectTransform> ().rotation = this.transform.rotation;

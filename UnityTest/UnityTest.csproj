@@ -462,6 +462,7 @@
     <Compile Include="Assets\imported_assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
     <Compile Include="Assets\scripts\AI\AIBehaviour.cs" />
+    <Compile Include="Assets\scripts\AI\AIHolder.cs" />
     <Compile Include="Assets\scripts\AI\EnemyHealth.cs" />
     <Compile Include="Assets\scripts\AI\EnemyHealthUI.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building.cs" />

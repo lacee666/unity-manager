@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BuildingWorkerFarm2 : BuildingWorker
 {
-
     private float startTime;
     // Use this for initialization
     void Start()
@@ -13,7 +12,7 @@ public class BuildingWorkerFarm2 : BuildingWorker
         cost = 70;
         startTime = Time.time;
         generateGoldPerSecond = 2;
-
+        secondsOfUpdate = 3.0f;
         //Debug.Log("Level2 farm spawned.");
     }
 
@@ -27,7 +26,7 @@ public class BuildingWorkerFarm2 : BuildingWorker
             playerResources.Gold += generateGoldPerSecond;
             startTime = Time.time;
         }
-      
+       
     }
 
     public override void Upgrade()
@@ -36,6 +35,7 @@ public class BuildingWorkerFarm2 : BuildingWorker
         Building temp = bi.Find("farm_house_lvl3");
         GameObject go = Instantiate(temp.prefab, this.transform.position, Quaternion.identity) as GameObject;
         go.AddComponent<BuildingWorkerFarm3>();
+        go.AddComponent<BoxCollider>();
         Destroy(go.GetComponent<BuildingStats>());
         Destroy(this.gameObject);
     }

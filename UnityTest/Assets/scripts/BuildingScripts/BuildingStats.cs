@@ -21,6 +21,7 @@ public class BuildingStats : MonoBehaviour {
         //Random random = new Random();
         //renderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Building"))
@@ -37,6 +38,25 @@ public class BuildingStats : MonoBehaviour {
             renderer.material.color = Color.green;
             canSpawn = true;
            // Debug.Log("Exited a building");
+        }
+    }
+    */
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag.Equals("Building"))
+        {
+            renderer.material.color = Color.red;
+            canSpawn = false;
+            // Debug.Log("Exited a building");
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag.Equals("Building"))
+        {
+            renderer.material.color = Color.green;
+            canSpawn = true;
+            // Debug.Log("Exited a building");
         }
     }
 }

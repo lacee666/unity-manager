@@ -11,8 +11,9 @@ public class BuildingWorkerFarm1 : BuildingWorker {
         cost = 40;
         startTime = Time.time;
         generateGoldPerSecond = 1;
+        secondsOfUpdate = 3.0f;
 
-       // Debug.Log("Level1 farm spawned.");
+        Debug.Log("SECONDS OF UPDATE:" + secondsOfUpdate);
     }
 	
 	// Update is called once per frame
@@ -24,7 +25,7 @@ public class BuildingWorkerFarm1 : BuildingWorker {
             playerResources.Gold += generateGoldPerSecond;
             startTime = Time.time;
         }
-        //SelectionUpdate();
+       
     }
     public override void Upgrade()
     {
@@ -32,6 +33,7 @@ public class BuildingWorkerFarm1 : BuildingWorker {
         Building temp = bi.Find("farm_house_lvl2");
         GameObject go = Instantiate(temp.prefab, this.transform.position, Quaternion.identity) as GameObject;
         go.AddComponent<BuildingWorkerFarm2>();
+        go.AddComponent<BoxCollider>();
         Destroy(go.GetComponent<BuildingStats>());
         Destroy(this.gameObject);
     }

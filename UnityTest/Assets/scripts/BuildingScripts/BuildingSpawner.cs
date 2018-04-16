@@ -223,6 +223,7 @@ public class BuildingSpawner : MonoBehaviour {
         holdBuilding = Instantiate(building.prefab, hit.point, Quaternion.identity) as GameObject;
         holdBuilding.GetComponent<Renderer>().material.color = Color.green;
         holdBuilding.GetComponent<BuildingStats>().CanSpawn = true;
+        holdBuilding.AddComponent<BoxCollider>();
         holdBuilding.GetComponent<SphereCollider>().isTrigger = true;
 
         //holdBuilding.GetComponent<Renderer>().material.color = Color.red;

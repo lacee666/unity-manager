@@ -5,69 +5,23 @@ using UnityEngine;
 public class BuildingTower : BaseBuilding {
 
 
-    protected static PlayerResources playerResources;
-    protected Renderer renderer;
-    protected Material material;
-    public static string selectionOutlineShaderName = "TSF/BaseOutline1";
-    protected float secondsOfUpdate;
-    protected bool selected = false;
+
+
+    protected AIHolder aiHolder;
     protected bool attacking = true;
     protected float attackPower;
-   
-    protected float attackTime = 0.0f;
-    protected  int level = 0;
-    public  int Level
-    {
-        get { return level; }
-    }
-    public bool Selected
-    {
-        get { return selected; }
-        set { selected = value; }
-    }
-
-    protected  int cost = 100;
-    public  int Cost
-    {
-        get { return cost; }
-    }
-    private void Awake()
-    {
-        renderer = this.GetComponent<Renderer>();
-        material = new Material(renderer.material);
-        playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
-    }
-    private void Update()
+    protected float attackTime;
+    protected float bulletSpeed;
+    void Start()
     {
 
-
-    }
-    public virtual void Upgrade()
-    {
-
-    }
-    public void SelectionUpdate()
-    {
-        if (selected)
-        {
-
-            OnSelection();
-        }
-        else
-        {
-            Deselect();
-        }
-    }
-    public void OnSelection()
-    {
-        renderer.material.shader = Shader.Find(selectionOutlineShaderName);
-    }
-    public void Deselect()
-    {
-        renderer.material = material;
     }
 
     public virtual void Attack(GameObject enemy)
+    {
+
+    }
+    public virtual void Upgrade()
     {
 
     }
