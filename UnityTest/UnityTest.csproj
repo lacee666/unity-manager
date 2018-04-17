@@ -465,8 +465,16 @@
     <Compile Include="Assets\scripts\AI\AIHolder.cs" />
     <Compile Include="Assets\scripts\AI\EnemyHealth.cs" />
     <Compile Include="Assets\scripts\AI\EnemyHealthUI.cs" />
+    <Compile Include="Assets\scripts\AI\waves\AIWaveHandler.cs" />
+    <Compile Include="Assets\scripts\AI\WaveTimeText.cs" />
+    <Compile Include="Assets\scripts\AI\WaveUI.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\BaseBuilding.cs" />
+    <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingLumbermill\BuildingLumbermill.cs" />
+    <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingLumbermill\BuildingLumbermill1.cs" />
+    <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingLumbermill\BuildingLumbermill2.cs" />
+    <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingLumbermill\BuildingLumbermill3.cs" />
+    <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingLumbermill\BuildingLumbermill4.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingTower\BuildingTower.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingTower\BuildingTower1.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingTower\BuildingTower2.cs" />
@@ -486,12 +494,14 @@
     <Compile Include="Assets\scripts\BuildingScripts\BuildingStats.cs" />
     <Compile Include="Assets\scripts\CameraController.cs" />
     <Compile Include="Assets\scripts\FacebookScript.cs" />
-    <Compile Include="Assets\scripts\FarmResearchUI.cs" />
+    <Compile Include="Assets\scripts\GameManager.cs" />
     <Compile Include="Assets\scripts\InGameMenu.cs" />
     <Compile Include="Assets\scripts\MainMenu.cs" />
     <Compile Include="Assets\scripts\MiniMapController.cs" />
     <Compile Include="Assets\scripts\PlayerResources.cs" />
-    <Compile Include="Assets\scripts\TowerResearchUI.cs" />
+    <Compile Include="Assets\scripts\Research\FarmResearchUI.cs" />
+    <Compile Include="Assets\scripts\Research\LumbermillResearch.cs" />
+    <Compile Include="Assets\scripts\Research\TowerResearchUI.cs" />
     <Compile Include="Assets\scripts\UpperBarGui.cs" />
   </ItemGroup>
   <ItemGroup>

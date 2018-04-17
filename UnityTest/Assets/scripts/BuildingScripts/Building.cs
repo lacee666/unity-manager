@@ -11,6 +11,6 @@ public class Building{
     {
         get { return level; }
     }
-
+    
 
 }

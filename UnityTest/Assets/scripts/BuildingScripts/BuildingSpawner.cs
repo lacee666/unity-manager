@@ -11,6 +11,7 @@ public class BuildingSpawner : MonoBehaviour {
     private GameObject holdBuilding;
     private string[] farmNames = { "farm_house_lvl1", "farm_house_lvl2", "farm_house_lvl3", "farm_house_lvl4" };
     private string[] towerNames = { "tower_lvl1", "tower_lvl2", "tower_lvl3", "tower_lvl4" };
+    private string[] lumbermillNames = { "lumbermill_lvl1", "lumbermill_lvl2", "lumbermill_lvl3", "lumbermill_lvl4" };
     public LayerMask buildingMask = 8;
     private int buildingType = 0;
     // Use this for initialization
@@ -68,6 +69,27 @@ public class BuildingSpawner : MonoBehaviour {
                     }
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                building = buildingInformation.Find(lumbermillNames[playerResources.lumbermillLevel]);
+                if (building != null)
+                {
+
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit = new RaycastHit();
+
+                    //excluding buildings so we hit the ground
+                    if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
+                    {
+                        //Debug.Log("Before: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.name.Equals("Ground"))
+                        {
+                            buildingType = 3;
+                            SpawnHolder(hit);
+                        }
+                    }
+                }
+            }
         }
         else
         {
@@ -92,8 +114,15 @@ public class BuildingSpawner : MonoBehaviour {
                         }else if(buildingType == 2)
                         {
                             SpawnTower(buildingTemp);
-                        }                                             
-                     
+                        }else if(buildingType == 3)
+                        {
+                            SpawnLumbermill(buildingTemp);
+                        }
+                        else if(buildingType == 4)
+                        {
+
+                        }
+                        buildingTemp.GetComponent<BaseBuilding>().OnCreation();
                         Destroy(holdBuilding);
                         currentlyBuilding = false;
                     }                                     
@@ -165,6 +194,7 @@ public class BuildingSpawner : MonoBehaviour {
             playerResources.Gold -= cost;
             buildingTemp.AddComponent<BoxCollider>().enabled = true;
             buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            
             Destroy(buildingTemp.GetComponent<BuildingStats>());
         }
         else
@@ -173,6 +203,48 @@ public class BuildingSpawner : MonoBehaviour {
 
         }
         
+    }
+    void SpawnLumbermill(GameObject buildingTemp)
+    {
+        int cost = 0;
+        cost = BuildingCosts.LumbermillCost(playerResources.lumbermillLevel);
+
+        switch (playerResources.lumbermillLevel)
+        {
+            case 0:
+                {
+                    buildingTemp.AddComponent<BuildingLumbermill1>().enabled = true;                
+                    break;
+                }
+            case 1:
+                {
+                    buildingTemp.AddComponent<BuildingLumbermill2>().enabled = true;               
+                    break;
+                }
+            case 2:
+                {
+                    buildingTemp.AddComponent<BuildingLumbermill3>().enabled = true;                
+                    break;
+                }
+            case 3:
+                {
+                    buildingTemp.AddComponent<BuildingLumbermill4>().enabled = true;
+                    break;
+                }
+            default: break;
+        }
+
+        if (playerResources.Gold >= cost)
+        {
+            playerResources.Gold -= cost;
+            buildingTemp.AddComponent<BoxCollider>().enabled = true;
+            buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            Destroy(buildingTemp.GetComponent<BuildingStats>());
+        }
+        else
+        {
+            Destroy(buildingTemp);
+        }
     }
     void SpawnTower(GameObject buildingTemp)
     {

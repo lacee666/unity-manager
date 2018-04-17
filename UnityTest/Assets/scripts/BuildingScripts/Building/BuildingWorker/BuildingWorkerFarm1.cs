@@ -37,4 +37,5 @@ public class BuildingWorkerFarm1 : BuildingWorker {
         Destroy(go.GetComponent<BuildingStats>());
         Destroy(this.gameObject);
     }
+    
 }

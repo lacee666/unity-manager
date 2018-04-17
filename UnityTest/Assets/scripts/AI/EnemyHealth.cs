@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	public Transform camera;
 	private float armor = 2f;
-    private float maxHealth = 1600f;
+    public float maxHealth = 300f;
     private float currentHealth;
     private AIHolder aiHolder;
 

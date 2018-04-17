@@ -25,7 +25,7 @@ public class TowerResearchUI : MonoBehaviour, IPointerClickHandler
             Debug.Log("Tower upgraded.");
             playerResources.Gold -= 100;
             playerResources.towerLevel += 1;
-            this.GetComponentInChildren<TextMeshProUGUI>().text = "Tower(" + (playerResources.towerLevel+1) + ")";
+            this.GetComponentInChildren<TextMeshProUGUI>().text = "Tower(" + (playerResources.towerLevel+1) + "): 100 gold";
         }
     }
 }

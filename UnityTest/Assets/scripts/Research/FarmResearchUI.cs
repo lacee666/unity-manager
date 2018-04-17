@@ -18,13 +18,13 @@ public class FarmResearchUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Levels: " + playerResources.farmLevel + "<" + playerResources.maxFarmLevel);
+        //Debug.Log("Levels: " + playerResources.farmLevel + "<" + playerResources.maxFarmLevel);
         if (playerResources.Gold >= 100 && playerResources.farmLevel < playerResources.maxFarmLevel)
         {
             Debug.Log("Farm upgraded.");
             playerResources.Gold -= 100;
             playerResources.farmLevel += 1;
-            this.GetComponentInChildren<TextMeshProUGUI>().text = "Farm(" + (playerResources.farmLevel+1) + ")";
+            this.GetComponentInChildren<TextMeshProUGUI>().text = "Farm(" + (playerResources.farmLevel+1) + "): 100 gold";
         }
     }
 }

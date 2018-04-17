@@ -7,9 +7,12 @@ public class AIBehaviour : MonoBehaviour {
 
     private Animator animator;
     private GameObject destination;
+    private AIHolder aiHolder;
+    private float damage = 30;
     NavMeshAgent navMeshAgent;
 	// Use this for initialization
 	void Start () {
+        aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
         animator = this.GetComponent<Animator>();
         destination = GameObject.Find("Capital_Hall");
         navMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -36,4 +39,13 @@ public class AIBehaviour : MonoBehaviour {
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Equals("Capital_Hall"))
+        {
+            other.GetComponentInChildren<EnemyHealth>().GetDamage(damage);
+            aiHolder.enemies.Remove(this.gameObject);
+            Destroy(this.gameObject);
+        }
+    }
 }

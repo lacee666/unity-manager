@@ -4,6 +4,19 @@ using UnityEngine;
 
 public static class BuildingCosts {
 
+    
+    public static int FarmUpgradeCost()
+    {
+        return 40;
+    }
+    public static int TowerUpgradeCost()
+    {
+        return 50;
+    }
+    public static int LumbermillUpgradeCost()
+    {
+        return 40;
+    }
     public static int FarmCost(int level)
     {
 
@@ -28,14 +41,6 @@ public static class BuildingCosts {
             default: return 10000;
         }
     }
-    public static int FarmUpgradeCost()
-    {
-        return 40;
-    }
-    public static int TowerUpgradeCost()
-    {
-        return 50;
-    }
     public static int TowerCost(int level)
     {
         switch (level)
@@ -56,6 +61,30 @@ public static class BuildingCosts {
             case 3:
                 {
                     return 200;
+                }
+            default: return 10000;
+        }
+    }
+    public static int LumbermillCost(int level)
+    {
+        switch (level)
+        {
+            case 0:
+                {
+                    return 30;
+                }
+            case 1:
+                {
+                    return 70;
+                }
+            case 2:
+                {
+
+                    return 120;
+                }
+            case 3:
+                {
+                    return 150;
                 }
             default: return 10000;
         }

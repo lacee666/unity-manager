@@ -55,5 +55,13 @@ public class BaseBuilding : MonoBehaviour {
     {
         renderer.material = material;
     }
+    public virtual void OnDestruction()
+    {
+
+    }
+    public virtual void OnCreation()
+    {
+
+    }
     protected int generateGoldPerSecond;
 }

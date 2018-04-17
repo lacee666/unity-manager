@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerResources : MonoBehaviour {
 
-    private int gold = 10000;
-    private int steel = 10;
+    private int gold = 300;
+    private int wood = 10;
     private int capacity = 0;
     private int maxCapacity = 10;
     public int farmLevel = 0;
@@ -33,18 +33,18 @@ public class PlayerResources : MonoBehaviour {
         }
     }
    
-    public int Steel
+    public int Wood
     {
-        get { return steel; }
+        get { return wood; }
         set
         {
             if (value >= 0)
             {
-                steel = value;
+                wood = value;
             }
             else
             {
-                steel = 0;
+                wood = 0;
             }
         }
     }
@@ -95,7 +95,16 @@ public class PlayerResources : MonoBehaviour {
 
     private void LateUpdate()
     {
-        upperBarGui.UpdateUpperBarGui(gold, steel, capacity, maxCapacity);
+        upperBarGui.UpdateUpperBarGui(gold, wood, capacity, maxCapacity);
     }
     
+    public void PlayMusic()
+    {
+        this.GetComponent<AudioSource>().Play();
+    }
+
+    public void StopMusic()
+    {
+        this.GetComponent<AudioSource>().Stop();
+    }
 }

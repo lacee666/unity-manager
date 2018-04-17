@@ -25,4 +25,13 @@ public class BuildingTower : BaseBuilding {
     {
 
     }
+
+    public override void OnDestruction()
+    {
+
+    }
+    public override void OnCreation()
+    {
+
+    }
 }

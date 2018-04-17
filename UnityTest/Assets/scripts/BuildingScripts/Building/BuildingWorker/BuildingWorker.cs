@@ -14,7 +14,14 @@ public class BuildingWorker : BaseBuilding
     {
 
     }
-  
+    public override void OnDestruction()
+    {
+        playerResources.MaxCapacity -= 2;
+    }
 
-    
+    public override void OnCreation()
+    {
+        playerResources.MaxCapacity += 2;
+    }
+
 }
