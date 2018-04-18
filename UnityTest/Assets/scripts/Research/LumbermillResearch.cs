@@ -6,10 +6,15 @@ using TMPro;
 public class LumbermillResearch : MonoBehaviour, IPointerClickHandler
 {
     PlayerResources playerResources;
+    private int upgradeCost = 300;
+    TextMeshProUGUI text;
     // Use this for initialization
     void Start()
     {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
+        this.GetComponentInChildren<TextMeshProUGUI>().text = "Lumbermill upgrade(" + (playerResources.towerLevel + 1) + "): " + upgradeCost + " gold";
+        text = GameObject.Find("lumbermill_upgrade_ui/cost").GetComponent<TextMeshProUGUI>();
+        text.text = "Cost: " + BuildingCosts.LumbermillCost(playerResources.lumbermillLevel).ToString();
     }
 
     // Update is called once per frame
@@ -21,12 +26,13 @@ public class LumbermillResearch : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
 
-        if (playerResources.Gold >= 100 && playerResources.lumbermillLevel < playerResources.maxLumbermillLevel)
+        if (playerResources.Gold >= upgradeCost && playerResources.lumbermillLevel < playerResources.maxLumbermillLevel)
         {
             Debug.Log("Farm upgraded.");
-            playerResources.Gold -= 100;
+            playerResources.Gold -= upgradeCost;
             playerResources.lumbermillLevel += 1;
-            this.GetComponentInChildren<TextMeshProUGUI>().text = "Lumbermill(" + (playerResources.lumbermillLevel + 1) + "): 100 gold";
+            this.GetComponentInChildren<TextMeshProUGUI>().text = "Lumbermill upgrade(" + (playerResources.lumbermillLevel + 1) + "): " + upgradeCost + " gold";
+            text.text = "Cost: " + BuildingCosts.FarmCost(playerResources.lumbermillLevel).ToString();
         }
     }
 }

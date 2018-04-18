@@ -4,18 +4,25 @@ using UnityEngine;
 
 public static class BuildingCosts {
 
-    
+    public static int BarracksCost()
+    {
+        return 150;
+    }
     public static int FarmUpgradeCost()
     {
-        return 40;
+        return 80;
     }
     public static int TowerUpgradeCost()
     {
-        return 50;
+        return 90;
     }
     public static int LumbermillUpgradeCost()
     {
-        return 40;
+        return 80;
+    }
+    public static int BarracksSoldierCost()
+    {
+        return 80;
     }
     public static int FarmCost(int level)
     {
@@ -24,19 +31,19 @@ public static class BuildingCosts {
         {
             case 0:
                 {
-                    return 10;
+                    return 100;
                 }
             case 1:
                 {
-                    return 20;
+                    return 150;
                 }
             case 2:
                 {
-                    return 30;
+                    return 220;
                 }
             case 3:
                 {
-                    return 40;
+                    return 300;
                 }
             default: return 10000;
         }
@@ -47,20 +54,20 @@ public static class BuildingCosts {
         {
             case 0:
                 {
-                    return 50;
+                    return 80;
                 }
             case 1:
                 {
-                    return 100;
+                    return 120;
                 }
             case 2:
                 {
 
-                    return 150;
+                    return 170;
                 }
             case 3:
                 {
-                    return 200;
+                    return 220;
                 }
             default: return 10000;
         }

@@ -20,10 +20,10 @@ public class WaveUI : MonoBehaviour {
 	}
     IEnumerator DeleteText()
     {
-        print("start");
+       
         yield return new WaitForSeconds(5);
         text.text = "";
-        print("end"); 
+
     }
     public void NotifyWaveUI(int number)
     {

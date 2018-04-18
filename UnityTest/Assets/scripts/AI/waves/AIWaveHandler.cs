@@ -15,8 +15,8 @@ public class AIWaveHandler : MonoBehaviour {
     private float waveTime;
     public float WaveTime { get { return waveTime; } }
 
-    private bool waveHappening = false;
-    public bool WaveHappening { get { return waveHappening; } }
+    private static bool waveHappening = false;
+    public static bool WaveHappening { get { return waveHappening; } }
     void Start () {
 
 

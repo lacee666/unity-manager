@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerResources : MonoBehaviour {
 
-    private int gold = 300;
-    private int wood = 10;
+    private int gold = 700;
+    private int wood = 200;
     private int capacity = 0;
-    private int maxCapacity = 10;
+    private int maxCapacity = 1;
     public int farmLevel = 0;
     public int maxFarmLevel = 3;
 

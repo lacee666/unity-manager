@@ -90,6 +90,27 @@ public class BuildingSpawner : MonoBehaviour {
                     }
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                building = buildingInformation.Find("barracks");
+                if (building != null)
+                {
+
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit = new RaycastHit();
+
+                    //excluding buildings so we hit the ground
+                    if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
+                    {
+                        //Debug.Log("Before: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.name.Equals("Ground"))
+                        {
+                            buildingType = 4;
+                            SpawnHolder(hit);
+                        }
+                    }
+                }
+            }
         }
         else
         {
@@ -120,7 +141,7 @@ public class BuildingSpawner : MonoBehaviour {
                         }
                         else if(buildingType == 4)
                         {
-
+                            SpawnBarracks(buildingTemp);
                         }
                         buildingTemp.GetComponent<BaseBuilding>().OnCreation();
                         Destroy(holdBuilding);
@@ -203,6 +224,22 @@ public class BuildingSpawner : MonoBehaviour {
 
         }
         
+    }
+    void SpawnBarracks(GameObject buildingTemp)
+    {
+        int cost = BuildingCosts.BarracksCost();
+        buildingTemp.AddComponent<BuildingBarracks>().enabled = true;
+        if (playerResources.Gold >= cost)
+        {
+            playerResources.Gold -= cost;
+            buildingTemp.AddComponent<BoxCollider>().enabled = true;
+            buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            Destroy(buildingTemp.GetComponent<BuildingStats>());
+        }
+        else
+        {
+            Destroy(buildingTemp);
+        }
     }
     void SpawnLumbermill(GameObject buildingTemp)
     {

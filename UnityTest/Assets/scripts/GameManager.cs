@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("LOST");
             LoseUI();
         }
-        if(aiWaveHandler.i >= 3)
+        if(aiWaveHandler.i >= 12)
         {
             WinUI();
         }

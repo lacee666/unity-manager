@@ -47,6 +47,6 @@ public class CameraController : MonoBehaviour {
 
     private void Move(Vector3 direction)
     {
-        this.transform.Translate(direction * cameraSpeed * acceleration * Time.deltaTime, Space.World);
+        this.transform.Translate(direction * cameraSpeed /** acceleration*/ * Time.deltaTime, Space.World);
     }
 }

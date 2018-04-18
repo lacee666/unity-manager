@@ -21,13 +21,14 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Example.GameGroups
 c08b196716247885d3b27f7f282b2568 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ImageEffectBase
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FacebookScript
+ddebd318d2afbc4c0f9b8afd472df220 Assembly-CSharp.dll:.FacebookScript
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingFarm
 a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.BlurOptimized
 56441db03d5b4bb548b050e61dd1186e Assembly-CSharp.dll:cakeslice.OutlineEffect
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Mobile.Android.AndroidFacebookLoader
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Mobile.IOS.IOSFacebookGameObject
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenu
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.WaveUI
 83008f76a1a9334fad1bccd76da4d138 Assembly-CSharp.dll:.BuildingSpawner
 23b50ef73e2c1a8a76860d35bcbbf8fc Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.GlobalFog
 daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ContrastStretch
@@ -36,7 +37,7 @@ daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingWorkerFarm2
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Editor.EditorFacebookLoader
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingWorker
-45b4cdc7698785c9ac6a9f604987b47a Assembly-CSharp.dll:.EnemyHealth
+9821ed4a7d0b532270c8a49a72437fba Assembly-CSharp.dll:.EnemyHealth
 1ad999c1c59cc66b1257b3f9407287bc Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ColorCorrectionCurves
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -70,6 +71,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingLumbermill1
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:cakeslice.OutlineAnimation
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -111,6 +113,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 cc897e31f90a455da1ad6fffc97043f1 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Antialiasing
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Editor.EditorFacebookGameObject
 765037da3d8faeee91e39d672b924c61 Assembly-CSharp.dll:.EnvMapAnimator
+f64bd62383f38467bca31a4181b606b1 Assembly-CSharp.dll:.AIWaveHandler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.AsyncRequestString
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BaseBuilding
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingTower3
@@ -147,7 +150,6 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 40d41f498420a9b3985f6fc7e5763447 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Bloom
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-7556318b1ae8d2357e788b6de279526e Assembly-CSharp.dll:LowPolyWater.LowPolyWater
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.TMP_PhoneNumberValidator
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Editor.Dialogs.MockLoginDialog
 22df741b1a3c6d3b215ca28ad83c5a3f Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientObscurance
@@ -176,6 +178,7 @@ d672cee35261f9935d5ce974c746730f TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TMP
 7916100d9d9f93e9a1e3d296f220958d Assembly-CSharp.dll:.BuildingInformation
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
+bbfdea75a9f2679b4da1f47cac413163 Assembly-CSharp.dll:.AIHolder
 9865a0db77364f8930077972a1d5efab Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.BloomOptimized
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
@@ -195,6 +198,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Editor.Dialogs.EmptyMockDialog
 b9332c0eee630779376843b5343eb250 Assembly-CSharp.dll:TMPro.Examples.TMP_TextInfoDebugTool
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.Example.ConsoleBase
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingLumbermill4
 f4bd1aee67eeef7953cce6c44588b3d7 TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TextContainer
 8e879b98cad4aa17a0beef746daecd35 TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TextMeshPro
 cdb4459900f4743ae0e8ca5a2c3a821a TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TextMeshProUGUI
@@ -236,11 +240,13 @@ a8ed45ab553b07236625df6cc6ac449c TextMeshPro-2017.3-1.0.56-Editor.dll:TMPro.Edit
 05524b8f659e7bfe5756d1335fec24ba TextMeshPro-2017.3-1.0.56-Editor.dll:TMPro.EditorUtilities.TMPro_TextContainerEditor
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.TMP_DigitValidator
 cac5093fb1baf037bd671ecbc6727828 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LumbermillResearch
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingStats
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TeleType
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Facebook.Unity.FB
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingLumbermill2
 30db6bf1abfbd17c6cdd1385b9eba6ca Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.DepthOfField
 8a50d3d11bf0cc541f5c35347dd25633 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingWorkerFarm1
@@ -267,12 +273,15 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CapitalBuilding
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.InGameMenu
 d481e54fdfeb4d18fe565637e78ca5dd Assembly-CSharp.dll:Facebook.Unity.FacebookSettings
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.WaveTimeText
 4aadab9e3e4d34f6e069833451e815bb Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.CreaseShading
 e2b50e4e1e5006d87e7ebe8a724e8f6d Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ContrastEnhance
 62229a3e4d53ca59bec192e89627ed52 Assembly-CSharp.dll:TMPro.Examples.CameraController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingLumbermill3
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingLumbermill
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 aa9d1bd0cc771545f2ae1f63a6d0ed6a Assembly-CSharp.dll:TMPro.Examples.TMP_TextEventCheck
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingWorkerFarm4
@@ -307,6 +316,7 @@ a51173280b81aed3c792da6e9cebc4cd Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 afc52d27c3ec0bd47909e81bd45fbffa Assembly-CSharp.dll:TMPro.TMP_TextEventHandler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.VertexColorCycler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FarmResearchUI
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GameManager
 53dbd7baa3c8da2f87828dd70d70dae4 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 7fc3adfac7efbc0706567dbaca46f637 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Fisheye
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.PostEffectsBase
@@ -319,3 +329,6 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingTower
 34e025057ef78b1bf238460cdf6583a3 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.SimpleScript
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildingBarracks
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SoldierAI
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnimationController

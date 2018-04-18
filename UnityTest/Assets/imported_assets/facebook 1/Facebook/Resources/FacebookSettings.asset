@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   appIds:
-  - 2069802306612027
+  - 239814003260905
   appLabels:
-  - App Name
+  - unityapp
   cookie: 1
   logging: 1
   status: 1
