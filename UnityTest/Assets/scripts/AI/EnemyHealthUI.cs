@@ -7,16 +7,10 @@ public class EnemyHealthUI : MonoBehaviour {
 
 	private EnemyHealth enemyHealth;
 	private Text text;
-	// Use this for initialization
+
 	void Start () {
-		//enemyHealth = GameObject.Find ("enemy_health_canvas").GetComponent<EnemyHealth> ();
         enemyHealth = this.transform.parent.parent.GetComponent<EnemyHealth>();
 		text = this.GetComponent<Text> ();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 
 	void LateUpdate(){

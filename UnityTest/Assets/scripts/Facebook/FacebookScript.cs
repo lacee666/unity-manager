@@ -46,9 +46,7 @@ public class FacebookScript : MonoBehaviour {
     public void FacebookLogin()
     {
         var permissions = new List<string>() { "public_profile", "email" };
-#pragma warning disable CS0618 // Type or member is obsolete
-        Application.LoadLevel("test");
-#pragma warning restore CS0618 // Type or member is obsolete
+
         FB.LogInWithReadPermissions(permissions, AuthCallBack);
         //
 
@@ -64,6 +62,9 @@ public class FacebookScript : MonoBehaviour {
             if (FB.IsLoggedIn)
             {
                 Debug.Log("LOGGED IN");
+
+                //Application.LoadLevel("test");
+
             }
             else
             {
@@ -85,7 +86,7 @@ public class FacebookScript : MonoBehaviour {
     }
     void DisplayUserName(IResult result)
     {
-        GameObject.Find("facebook_name").GetComponent<TextMeshProUGUI>().text = "Hi, " + result.ResultDictionary["first_name"].ToString();
+        //GameObject.Find("facebook_name").GetComponent<TextMeshProUGUI>().text = "Hi, " + result.ResultDictionary["first_name"].ToString();
         //GameObject.Find("facebook_bar").GetComponent<Image>().sprite = result.ResultDictionary["cover"] as Sprite;
     }
     public void FacebookLogout()

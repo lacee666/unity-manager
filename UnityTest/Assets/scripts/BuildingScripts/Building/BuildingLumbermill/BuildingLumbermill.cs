@@ -8,12 +8,13 @@ public class BuildingLumbermill : BaseBuilding {
     void Start()
     {
         secondsOfUpdate = 3.0f;
+        upgradeCost = 60;
     }
 
-    public virtual void Upgrade()
+    /*public virtual void Upgrade()
     {
 
-    }
+    }*/
     public override void OnDestruction()
     {
         

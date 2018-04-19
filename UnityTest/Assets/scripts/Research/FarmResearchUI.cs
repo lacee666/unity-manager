@@ -20,7 +20,7 @@ public class FarmResearchUI : MonoBehaviour, IPointerClickHandler
         text.text = "Cost: " + BuildingCosts.FarmCost(playerResources.farmLevel).ToString();
     }
 	
-	// Update is called once per frame
+	
 	void Update () {
 		
 	}

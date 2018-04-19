@@ -10,7 +10,7 @@ public class BuildingWorkerFarm1 : BuildingWorker {
         level = 0;
         cost = 40;
         startTime = Time.time;
-        generateGoldPerSecond = 1;
+        generateGoldPerSecond = 4;
         secondsOfUpdate = 3.0f;
 
         Debug.Log("SECONDS OF UPDATE:" + secondsOfUpdate);

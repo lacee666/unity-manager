@@ -468,7 +468,6 @@
     <Compile Include="Assets\scripts\AI\waves\AIWaveHandler.cs" />
     <Compile Include="Assets\scripts\AI\WaveTimeText.cs" />
     <Compile Include="Assets\scripts\AI\WaveUI.cs" />
-    <Compile Include="Assets\scripts\AnimationController\AnimationController.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\BaseBuilding.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingBarracks\BuildingBarracks.cs" />
@@ -489,7 +488,6 @@
     <Compile Include="Assets\scripts\BuildingScripts\Building\BuildingWorker\BuildingWorkerFarm4.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\Building\CapitalHall\CapitalBuilding.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\BuildingCosts.cs" />
-    <Compile Include="Assets\scripts\BuildingScripts\BuildingFarm.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\BuildingInformation.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\BuildingSelection.cs" />
     <Compile Include="Assets\scripts\BuildingScripts\BuildingSpawner.cs" />

@@ -14,10 +14,6 @@ public class UpperBarGui : MonoBehaviour {
         capacityText = GameObject.Find("capacity_bar/capacity_text").GetComponent<Text>();
     }
 	
-	void Update () {
-		
-	}
-
     public void UpdateUpperBarGui(int goldValue, int steelValue, int capacityValue, int maxCapacityValue)
     {
         goldText.text = goldValue.ToString();

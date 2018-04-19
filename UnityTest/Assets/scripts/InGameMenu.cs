@@ -9,7 +9,7 @@ public class InGameMenu : MonoBehaviour {
     public void Start()
     {
         menuOn = false;
-        menu = GameObject.Find("menu");
+        menu = GameObject.Find("Menu");
         menu.SetActive(false);
     }
     public void Cancel()

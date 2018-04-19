@@ -11,8 +11,9 @@ public class BuildingLumbermill1 : BuildingLumbermill
     {
         level = 0;
         cost = 20;
+        upgradeCost = 50;
         startTime = Time.time;
-        generateWoodPerSecond = 1;
+        generateWoodPerSecond = 3;
         secondsOfUpdate = 3.0f;
 
     }

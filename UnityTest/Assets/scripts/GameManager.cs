@@ -18,11 +18,9 @@ public class GameManager : MonoBehaviour {
         
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(health == null)
         {
-            Debug.Log("LOST");
             LoseUI();
         }
         if(aiWaveHandler.i >= 12)
@@ -40,8 +38,7 @@ public class GameManager : MonoBehaviour {
     public void WinUI()
     {
         endUI.SetActive(true);
-        Time.timeScale = 0;
-        
+        Time.timeScale = 0;       
         text.text = "You won!";
     }
 }

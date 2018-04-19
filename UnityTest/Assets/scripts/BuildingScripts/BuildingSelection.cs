@@ -7,14 +7,14 @@ using UnityEngine.EventSystems;
 public class BuildingSelection : MonoBehaviour {
 
     public LayerMask buildingMask = 8;
+
     // this will be the selected building
     private GameObject focus;
+    private GameObject buildingInformationUI;
+    private PlayerResources playerResources;
 
     // not in use
     private GameObject uiHolder;
-
-    private GameObject buildingInformationUI;
-    private PlayerResources playerResources;
 
     void Start () {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
@@ -28,53 +28,32 @@ public class BuildingSelection : MonoBehaviour {
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
-            //Debug.Log("Mouse click happened at: " + ray);
             if (Physics.Raycast(ray, out hit, 1500.0f, (1 << buildingMask.value)))
             {
-                //Debug.Log("Mouse click on building: " + hit.collider.gameObject.name);
                 if (hit.collider.gameObject.tag.Equals("Building"))
-                {
-                   //Debug.Log("Mouse click on building and tag: ");
-                    Debug.Log("OBJ name: " + hit.collider.gameObject);
-                   /* if(focus != hit.collider.gameObject)
-                    {
-                         Debug.Log("NEW OBJ name: " + hit.collider.gameObject);
-                         DeleteUI();
-                    }*/
+                {             
                     focus = hit.collider.gameObject;
-
                     int cost = focus.GetComponent<BaseBuilding>().Cost;
                     focus.GetComponent<BaseBuilding>().Selected = true;
                     focus.GetComponent<BaseBuilding>().SelectionUpdate();
-                    PopupUI();
-                   
-                   
-                    //GameObject.Find("upgrade_text").GetComponent<TextMeshProUGUI>().SetText("Upgrade: " + cost);
-                    //Debug.Log(focus.gameObject.name);
-                    
+                    PopupUI();                 
                 }
             }
             else
             {
-
                 if (focus != null)
                 {
                     focus.GetComponent<BaseBuilding>().Selected = false;
                     focus.GetComponent<BaseBuilding>().SelectionUpdate();
                 }
-
-            }
-        
-        }
-        
+            }      
+        }        
         else if(Input.GetKeyUp(KeyCode.Tab))
         {
             if (focus != null)
-            {
-                
+            {           
                 focus.GetComponent<BaseBuilding>().Selected = false;
                 focus.GetComponent<BaseBuilding>().SelectionUpdate();
-
                 DeleteUI();
             }
         }
@@ -85,28 +64,36 @@ public class BuildingSelection : MonoBehaviour {
     }
     public void PopupUI()
     {
-        Debug.Log("UI popped up.");
+        //places the UI on top of the selected building
         buildingInformationUI.transform.position = Camera.main.WorldToScreenPoint(focus.transform.position);
         buildingInformationUI.SetActive(true);
         TextMeshProUGUI text = GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>();
         text.color = Color.white;
+
+        //cost handling
         if (focus.GetComponent<BaseBuilding>() is BuildingBarracks)
         {
-            text.SetText("Buy soldier");
-            
+                     
             BuildingBarracks bw = focus.GetComponent<BuildingBarracks>();
+            text.SetText("Buy soldier: " + bw.Cost);
             if (playerResources.Wood < bw.Cost)
             {
                 GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
             }
         }
         else
-        {
-            
+        {           
             text.SetText("Upgrade" + focus.GetComponent<BaseBuilding>().Cost);
+            /*
+            BaseBuilding bws = focus.GetComponent<BaseBuilding>();
+            if (playerResources.Gold < bws.Cost || playerResources.lumbermillLevel <= bws.Level)
+            {
+                Debug.Log("Not enough: " + playerResources.Gold + "<" + bws.Cost + "||" + playerResources.lumbermillLevel + "<=" + bws.Level);
+                GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
+            }
+            */
             if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
             {
-                //Debug.Log("Text red in farm");
                 BuildingWorker bw = focus.GetComponent<BuildingWorker>();
                 if (playerResources.Gold < bw.Cost || playerResources.farmLevel <= bw.Level)
                 {
@@ -115,7 +102,6 @@ public class BuildingSelection : MonoBehaviour {
             }
             else if (focus.GetComponent<BaseBuilding>() is BuildingTower)
             {
-                //Debug.Log("Text red in tower");
                 BuildingTower bw = focus.GetComponent<BuildingTower>();
                 if (playerResources.Gold < bw.Cost || playerResources.towerLevel <= bw.Level)
                 {
@@ -130,6 +116,7 @@ public class BuildingSelection : MonoBehaviour {
                     GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
             }
+           
         }
         /*
         Debug.Log("Cost: " + playerResources.Gold + " < " + focus.GetComponent<BaseBuilding>().Cost);
@@ -138,7 +125,7 @@ public class BuildingSelection : MonoBehaviour {
             GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
         }
         */
-        
+
         //uiHolder = Instantiate(buildingInformationUI);
         //uiHolder.transform.parent = (GameObject.Find("Canvas").transform);
         //GameObject.Find("buildingInformationUI/upgrade").GetComponent<Button>().onClick.AddListener(() => OnUpgrade());
@@ -146,9 +133,9 @@ public class BuildingSelection : MonoBehaviour {
         //buildingInformationUI.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { OnUpgrade(); });
         //buildingInformationUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate{ OnDestroy(); });
     }
+
     public void DeleteUI()
     {
-        //Debug.Log("UI Deleted.");
         if (buildingInformationUI != null)
         {
             buildingInformationUI.SetActive(false);
@@ -156,56 +143,54 @@ public class BuildingSelection : MonoBehaviour {
     }
 
     public void OnUpgrade()
-    {
-        
-        Debug.Log("Upgrading...");
+    {     
         if(focus != null)
         {
-            if(focus.GetComponent<BaseBuilding>() is BuildingWorker)
+            /*
+            if (playerResources.Gold >= focus.GetComponent<BaseBuilding>().UpgradeCost && playerResources.farmLevel > focus.GetComponent<BaseBuilding>().Level)
             {
-                Debug.Log("Upgrading BW...");
-                if (playerResources.Gold >= BuildingCosts.FarmUpgradeCost() && playerResources.farmLevel > focus.GetComponent<BuildingWorker>().Level)
+                playerResources.Gold -= focus.GetComponent<BaseBuilding>().UpgradeCost;
+                focus.GetComponent<BaseBuilding>().Upgrade();
+                DeleteUI();
+            }
+            */          
+            if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
+            {
+                if (playerResources.Gold >= focus.GetComponent<BuildingWorker>().UpgradeCost && playerResources.farmLevel > focus.GetComponent<BuildingWorker>().Level)
                 {
-                    playerResources.Gold -= BuildingCosts.FarmUpgradeCost();
+                    playerResources.Gold -= focus.GetComponent<BuildingWorker>().UpgradeCost;
                     focus.GetComponent<BuildingWorker>().Upgrade();
                     DeleteUI();
                 }
             } else if(focus.GetComponent<BaseBuilding>() is BuildingTower)
             {
-                Debug.Log("Upgrading BT...");
-                Debug.Log(playerResources.towerLevel);
-                Debug.Log(focus.GetComponent<BuildingTower>().Level);
-                if (playerResources.Gold >= BuildingCosts.TowerUpgradeCost() && playerResources.towerLevel > focus.GetComponent<BuildingTower>().Level)
+                if (playerResources.Gold >= focus.GetComponent<BuildingTower>().UpgradeCost && playerResources.towerLevel > focus.GetComponent<BuildingTower>().Level)
                 {
-                    playerResources.Gold -= BuildingCosts.TowerUpgradeCost();
+                    playerResources.Gold -= focus.GetComponent<BuildingTower>().UpgradeCost;
                     focus.GetComponent<BuildingTower>().Upgrade();
                     DeleteUI();
                 }
             }
             else if (focus.GetComponent<BaseBuilding>() is BuildingLumbermill)
             {
-                Debug.Log("Upgrading BL...");
-                Debug.Log(playerResources.lumbermillLevel);
-                Debug.Log(focus.GetComponent<BuildingLumbermill>().Level);
-                if (playerResources.Gold >= BuildingCosts.LumbermillUpgradeCost() && playerResources.lumbermillLevel > focus.GetComponent<BuildingLumbermill>().Level)
+                Debug.Log(playerResources.lumbermillLevel + ">" + focus.GetComponent<BuildingLumbermill>().Level);
+                if (playerResources.Gold >= focus.GetComponent<BuildingLumbermill>().UpgradeCost && playerResources.lumbermillLevel > focus.GetComponent<BuildingLumbermill>().Level)
                 {
-                    playerResources.Gold -= BuildingCosts.LumbermillUpgradeCost();
+                    playerResources.Gold -= focus.GetComponent<BuildingLumbermill>().UpgradeCost;
                     focus.GetComponent<BuildingLumbermill>().Upgrade();
                     DeleteUI();
                 }
             }
             else if (focus.GetComponent<BaseBuilding>() is BuildingBarracks)
             {
-                Debug.Log("Upgrading B'B...");
 
-                if (playerResources.Wood >= BuildingCosts.BarracksSoldierCost() && playerResources.Capacity < playerResources.MaxCapacity)
+                if (playerResources.Wood >= focus.GetComponent<BuildingBarracks>().UpgradeCost && playerResources.Capacity < playerResources.MaxCapacity)
                 {
-                    Debug.Log("Before spawning soldier");
-                    playerResources.Wood -= BuildingCosts.BarracksSoldierCost();
+                    playerResources.Wood -= focus.GetComponent<BuildingBarracks>().UpgradeCost;
                     focus.GetComponent<BuildingBarracks>().Upgrade();
                     DeleteUI();
                 }
-            }
+            }          
         }
                   
     }

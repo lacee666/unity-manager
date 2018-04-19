@@ -10,6 +10,7 @@ public class BuildingBarracks : BaseBuilding {
 	void Start () {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
         cost = 50;
+        upgradeCost = 60;
 		prefab = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>().Find("soldier");
 	}
 	

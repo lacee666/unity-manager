@@ -4,30 +4,31 @@ using UnityEngine;
 using UnityEngine.AI;
 public class SoldierAI : MonoBehaviour {
 
-
+    // this contains the list of enemies
     private AIHolder aiHolder;
-    private float damage = 10;
-    private bool attacking = false;
-    private float attackTime = 1.0f;
-    private float attackPower = 15f;
     private GameObject target;
-
     NavMeshAgent navMeshAgent;
     Rigidbody rb;
+    // when enemies are dead, soldier goes back to this point
     private GameObject middle;
     private Animator animator;
+
+    private float damage = 10;
+    private bool attacking = false;
     private bool running = false;
-    // Use this for initialization
+    //attack cooldown
+    private float attackTime = 1.0f;
+    private float attackPower = 15f;     
+    
+
     void Start()
     {
-        animator = this.GetComponent<Animator>();
-
-        rb = this.GetComponent<Rigidbody>();
-        middle = GameObject.Find("middle");
-        aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
-
-
         navMeshAgent = this.GetComponent<NavMeshAgent>();
+        animator = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody>();
+        aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
+        middle = GameObject.Find("Middle_Point");
+        
 
         if (navMeshAgent == null)
         {
@@ -54,8 +55,7 @@ public class SoldierAI : MonoBehaviour {
         }
         else
         {
-            Debug.Log("walk");
-            
+            Debug.Log("walk");           
         }
 
         if(target == null)
@@ -68,6 +68,7 @@ public class SoldierAI : MonoBehaviour {
         }
         
     }
+    // calculates the closest enemy from aiHolder.enemies, returns index
     private int FindSmallest()
     {
         GameObject go = aiHolder.enemies[0];
@@ -80,9 +81,9 @@ public class SoldierAI : MonoBehaviour {
                 j = i;
             }
         }
-
         return j;
     }
+
     private void SetDestination()
     {
         if (AIWaveHandler.WaveHappening)
@@ -91,16 +92,16 @@ public class SoldierAI : MonoBehaviour {
             {
                 try
                 {
-                    int closest = FindSmallest();
+
                     //target = aiHolder.enemies[Random.Range(0, aiHolder.enemies.Count - 1)];
+                    int closest = FindSmallest();
                     target = aiHolder.enemies[closest];
-                    navMeshAgent.SetDestination(target.transform.position);
+                    //navMeshAgent.SetDestination(target.transform.position);
                 }
                 catch (System.Exception e)
                 {
 
                 }
-                Debug.Log("Destination set to skeleton.");
             }
             navMeshAgent.SetDestination(target.transform.position);
         }
@@ -108,7 +109,6 @@ public class SoldierAI : MonoBehaviour {
         {
             attacking = false;
             navMeshAgent.SetDestination(middle.transform.position);
-            Debug.Log("Destination set to middle.");
         }
         
     }
@@ -116,7 +116,13 @@ public class SoldierAI : MonoBehaviour {
     {
         if (other.gameObject == target)
         {
-            Debug.Log("Attacking");
+            attacking = true;
+        }
+    }
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == target)
+        {
             attacking = true;
         }
     }
@@ -124,25 +130,22 @@ public class SoldierAI : MonoBehaviour {
     {
         if (other.gameObject == target)
         {
-            attacking = false;
-            
+            attacking = false;          
         }
     }
     public void AttackEnemy()
     {
         if (attackTime <= 0.0f)
         {
-   
-
             if (target != null)
             {
-                attacking = true;
-                Debug.Log("Can attack");
+                //attacking = true;
                 Attack(target);
                 attackTime = 1.0f;
             }
         }
     }
+
     public void Attack(GameObject enemy)
     {
        
@@ -154,6 +157,11 @@ public class SoldierAI : MonoBehaviour {
             animator.Play("walk");
             attacking = false;
             aiHolder.enemies.Remove(enemy);
+        }
+        else if(enemyHealth == null)
+        {
+            animator.Play("walk");
+            attacking = false;
         }
     }
    

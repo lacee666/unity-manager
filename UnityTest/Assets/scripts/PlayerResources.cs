@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerResources : MonoBehaviour {
 
-    private int gold = 700;
-    private int wood = 200;
+    private int gold = 11700;
+    private int wood = 11200;
     private int capacity = 0;
     private int maxCapacity = 1;
+
     public int farmLevel = 0;
     public int maxFarmLevel = 3;
 
@@ -19,6 +20,8 @@ public class PlayerResources : MonoBehaviour {
 
     public int lumbermillLevel = 0;
     public int maxLumbermillLevel = 3;
+
+    private UpperBarGui upperBarGui;
 
     public int Gold
     {
@@ -80,17 +83,9 @@ public class PlayerResources : MonoBehaviour {
             }
         }
     }
-
-
-    private UpperBarGui upperBarGui;
-	// Use this for initialization
+  
 	void Start () {
         upperBarGui = GameObject.Find("UpperBarGuiHolder").GetComponent<UpperBarGui>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
     private void LateUpdate()

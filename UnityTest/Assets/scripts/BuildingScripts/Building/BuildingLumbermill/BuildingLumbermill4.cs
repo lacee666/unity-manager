@@ -8,10 +8,10 @@ public class BuildingLumbermill4 : BuildingLumbermill {
 
     void Start()
     {
-        level = 0;
+        level = 3;
         cost = 100;
         startTime = Time.time;
-        generateWoodPerSecond = 7;
+        generateWoodPerSecond = 12;
         secondsOfUpdate = 3.0f;
 
     }

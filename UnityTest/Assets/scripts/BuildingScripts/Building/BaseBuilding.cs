@@ -12,6 +12,12 @@ public class BaseBuilding : MonoBehaviour {
     protected float secondsOfUpdate;
     protected int level = 0;
 
+    protected int upgradeCost;
+    public int UpgradeCost
+    {
+        get { return upgradeCost; }
+    }
+
     public int Level
     {
         get { return level; }
@@ -60,6 +66,10 @@ public class BaseBuilding : MonoBehaviour {
 
     }
     public virtual void OnCreation()
+    {
+
+    }
+    public virtual void Upgrade()
     {
 
     }

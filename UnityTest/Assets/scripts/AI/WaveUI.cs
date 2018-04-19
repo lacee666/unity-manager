@@ -7,23 +7,18 @@ public class WaveUI : MonoBehaviour {
 
     TextMeshProUGUI text;
     AIWaveHandler aiWaveHandler;
-	// Use this for initialization
+    string[] waveText = new string[3]{ "Wave coming from west", "Wave coming from east", "Wave coming from south" };
+
 	void Start () {
         aiWaveHandler = GameObject.Find("AIHolder").GetComponent<AIWaveHandler>();
         text = this.GetComponent<TextMeshProUGUI>();
         this.enabled = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     IEnumerator DeleteText()
-    {
-       
+    {    
         yield return new WaitForSeconds(5);
         text.text = "";
-
     }
     public void NotifyWaveUI(int number)
     {
@@ -31,17 +26,17 @@ public class WaveUI : MonoBehaviour {
         {
             case 0:
                 {
-                    text.text = "Wave coming from west";                 
+                    text.text = waveText[0];                 
                     break;
                 }
             case 1:
                 {
-                    text.text = "Wave coming from east";
+                    text.text = waveText[1];
                     break;
                 }
             case 2:
                 {
-                    text.text = "Wave coming from south";
+                    text.text = waveText[2];
                     break;
                 }
         }

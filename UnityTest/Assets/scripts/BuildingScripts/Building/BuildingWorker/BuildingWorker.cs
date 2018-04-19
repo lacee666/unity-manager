@@ -8,12 +8,13 @@ public class BuildingWorker : BaseBuilding
     void Start()
     {
         secondsOfUpdate = 3.0f;
+        upgradeCost = 50;
     }
 
-    public virtual void Upgrade()
+    /*public virtual void Upgrade()
     {
 
-    }
+    }*/
     public override void OnDestruction()
     {
         playerResources.MaxCapacity -= 2;

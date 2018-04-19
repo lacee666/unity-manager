@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this class contains all the prefabs the game uses to instantiate
 public class BuildingInformation : MonoBehaviour {
 
     [SerializeField]

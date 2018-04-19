@@ -11,7 +11,7 @@ public class BuildingWorkerFarm2 : BuildingWorker
         level = 1;
         cost = 70;
         startTime = Time.time;
-        generateGoldPerSecond = 2;
+        generateGoldPerSecond = 7;
         secondsOfUpdate = 3.0f;
         //Debug.Log("Level2 farm spawned.");
     }

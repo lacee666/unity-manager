@@ -4,10 +4,8 @@ using UnityEngine;
 
 public static class BuildingCosts {
 
-    public static int BarracksCost()
-    {
-        return 150;
-    }
+    
+
     public static int FarmUpgradeCost()
     {
         return 80;
@@ -19,6 +17,11 @@ public static class BuildingCosts {
     public static int LumbermillUpgradeCost()
     {
         return 80;
+    }
+
+    public static int BarracksCost()
+    {
+        return 150;
     }
     public static int BarracksSoldierCost()
     {

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+//this class describes a building... and other objects too...
 [System.Serializable]
 public class Building{
     public string name;
@@ -11,6 +13,4 @@ public class Building{
     {
         get { return level; }
     }
-    
-
 }

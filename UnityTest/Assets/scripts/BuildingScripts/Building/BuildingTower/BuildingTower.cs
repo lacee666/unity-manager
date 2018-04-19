@@ -14,17 +14,17 @@ public class BuildingTower : BaseBuilding {
     protected float bulletSpeed;
     void Start()
     {
-
+        upgradeCost = 80;
     }
 
     public virtual void Attack(GameObject enemy)
     {
 
     }
-    public virtual void Upgrade()
+   /* public virtual void Upgrade()
     {
 
-    }
+    }*/
 
     public override void OnDestruction()
     {
