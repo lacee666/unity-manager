@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
         {
             LoseUI();
         }
-        if(aiWaveHandler.i >= 12)
+        if(aiWaveHandler.i >= 15)
         {
             WinUI();
         }

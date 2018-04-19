@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54069078689749792}
   - component: {fileID: 135938457307035126}
   - component: {fileID: 65219708499487828}
-  - component: {fileID: 114724941856392366}
   - component: {fileID: 114603625580561492}
   m_Layer: 0
   m_Name: house_lvl7
@@ -141,17 +140,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 297cb4e0154d1b14489b783928320e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114724941856392366
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1829272864192424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40fd39b77b3f3074aa972f3b888bc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135938457307035126

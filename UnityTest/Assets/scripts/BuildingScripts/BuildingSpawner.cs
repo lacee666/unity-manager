@@ -141,7 +141,7 @@ public class BuildingSpawner : MonoBehaviour {
                         {
                             SpawnBarracks(buildingTemp);
                         }
-                        buildingTemp.GetComponent<BaseBuilding>().OnCreation();
+                        
                         Destroy(holdBuilding);
                         currentlyBuilding = false;
                     }                                     
@@ -209,7 +209,7 @@ public class BuildingSpawner : MonoBehaviour {
             playerResources.Gold -= cost;
             buildingTemp.AddComponent<BoxCollider>().enabled = true;
             buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
-            
+            buildingTemp.GetComponent<BaseBuilding>().OnCreation();
             Destroy(buildingTemp.GetComponent<BuildingStats>());
         }
         else
@@ -229,6 +229,7 @@ public class BuildingSpawner : MonoBehaviour {
             playerResources.Gold -= cost;
             buildingTemp.AddComponent<BoxCollider>().enabled = true;
             buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            buildingTemp.GetComponent<BaseBuilding>().OnCreation();
             Destroy(buildingTemp.GetComponent<BuildingStats>());
         }
         else
@@ -268,7 +269,9 @@ public class BuildingSpawner : MonoBehaviour {
             playerResources.Gold -= cost;
             buildingTemp.AddComponent<BoxCollider>().enabled = true;
             buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
+            buildingTemp.GetComponent<BaseBuilding>().OnCreation();
             Destroy(buildingTemp.GetComponent<BuildingStats>());
+            
         }
         else
         {
@@ -310,6 +313,7 @@ public class BuildingSpawner : MonoBehaviour {
             buildingTemp.AddComponent<BoxCollider>().enabled = true;
             buildingTemp.GetComponent<SphereCollider>().isTrigger = true;
             buildingTemp.GetComponent<SphereCollider>().radius = 2.0f;
+            buildingTemp.GetComponent<BaseBuilding>().OnCreation();
             Destroy(buildingTemp.GetComponent<BuildingStats>());
         }
         else

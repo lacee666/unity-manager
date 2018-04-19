@@ -8,7 +8,7 @@ public class BuildingBarracks : BaseBuilding {
 
     private void Awake()
     {
-        cost = 50;
+        cost = 60;
     }
     void Start () {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();

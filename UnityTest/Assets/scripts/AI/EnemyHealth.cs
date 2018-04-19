@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour {
     [SerializeField]
     public Image image;
     private float armor = 2f;
-    public float maxHealth = 300f;
+    public float maxHealth = 500f;
     private float currentHealth;
     
 	public float CurrentHealth{

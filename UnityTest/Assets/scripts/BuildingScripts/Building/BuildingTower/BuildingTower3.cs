@@ -12,7 +12,7 @@ public class BuildingTower3 : BuildingTower
     void Start()
     {
         level = 2;
-        attackPower = 120;
+        attackPower = 100;
         aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
         bulletSpeed = 500f;
         bullet = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>().Find("bullet");

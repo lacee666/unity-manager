@@ -10,7 +10,7 @@ public class BuildingTower4 : BuildingTower
     }
     void Start()
     {
-        attackPower = 200;
+        attackPower = 135;
         level = 3;
         cost = 150;
         aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();

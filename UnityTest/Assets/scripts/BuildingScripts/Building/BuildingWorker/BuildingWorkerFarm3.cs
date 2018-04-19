@@ -13,7 +13,7 @@ public class BuildingWorkerFarm3 : BuildingWorker
     {
         level = 2;
         startTime = Time.time;
-        generateGoldPerSecond = 12;
+        generateGoldPerSecond = 7;
         secondsOfUpdate = 3.0f;
     }
 

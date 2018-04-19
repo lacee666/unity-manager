@@ -63,15 +63,16 @@ public class AIWaveHandler : MonoBehaviour {
     {
         int r = Random.Range(0, 3);
         waveUI.NotifyWaveUI(r);
-        SpawnEnemies(spawnplaces[r], count);
-        // this function calculates the next wave and i is always i+=1 after the next wave, so it gets harder over time
         count = CalculateCount(i);
         i++;
+        SpawnEnemies(spawnplaces[r], count);
+        // this function calculates the next wave and i is always i+=1 after the next wave, so it gets harder over time
+        
     }
     
     int CalculateCount(int x)
     {
-        return (3*(x * x) / 2);
+        return (2*(x * x));
     }
 
     void SpawnEnemies(GameObject place, int count)

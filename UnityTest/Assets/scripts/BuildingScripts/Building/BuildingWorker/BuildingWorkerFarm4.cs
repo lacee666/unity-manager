@@ -16,7 +16,7 @@ public class BuildingWorkerFarm4 : BuildingWorker
         level = 3;
 
         startTime = Time.time;
-        generateGoldPerSecond = 15;
+        generateGoldPerSecond = 9;
         secondsOfUpdate = 3.0f;
 
     }

@@ -13,7 +13,7 @@ public class BuildingLumbermill4 : BuildingLumbermill {
     {
         level = 3;
         startTime = Time.time;
-        generateWoodPerSecond = 9;
+        generateWoodPerSecond = 4;
         secondsOfUpdate = 3.0f;
 
     }

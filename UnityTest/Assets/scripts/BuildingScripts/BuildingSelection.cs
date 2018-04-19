@@ -189,9 +189,10 @@ public class BuildingSelection : MonoBehaviour {
             }
             else if (focus.GetComponent<BaseBuilding>() is BuildingBarracks)
             {
-
+                Debug.Log("Barracks selected for upgrade");
                 if (playerResources.Wood >= focus.GetComponent<BuildingBarracks>().UpgradeCost && playerResources.Capacity < playerResources.MaxCapacity)
                 {
+                    Debug.Log("Barracks selected for upgrade OK");
                     playerResources.Wood -= focus.GetComponent<BuildingBarracks>().UpgradeCost;
                     focus.GetComponent<BuildingBarracks>().Upgrade();
                     DeleteUI();
