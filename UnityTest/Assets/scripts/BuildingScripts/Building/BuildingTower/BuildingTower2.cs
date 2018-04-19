@@ -7,14 +7,18 @@ public class BuildingTower2 : BuildingTower
 
     private float startTime;
 
+    private void Awake()
+    {
+        cost = 80;
+    }
 
     void Start()
     {
         level = 1;
-        cost = 80;
         attackPower = 70;
         aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
         bulletSpeed = 500f;
+        bullet = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>().Find("bullet");
     }
 
    
@@ -32,17 +36,12 @@ public class BuildingTower2 : BuildingTower
     {
         if (attackTime <= 0.0f)
         {
-            //System.Random rnd = new System.Random();
-            //int r = rnd.Next(enemies.Count);
-
-
             if(aiHolder.enemies.Count == 0)
             {
                 return;
             }
             GameObject enemy = null;
           
-
             for(int i = 0; i < aiHolder.enemies.Count; i++)
             {
                 if(Vector3.Distance(this.transform.position, aiHolder.enemies[i].transform.position) < 2.0f)
@@ -61,6 +60,7 @@ public class BuildingTower2 : BuildingTower
             }
         }
     }
+
     public override void Upgrade()
     {
         BuildingInformation bi = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>();
@@ -71,16 +71,7 @@ public class BuildingTower2 : BuildingTower
         Destroy(go.GetComponent<BuildingStats>());
         Destroy(this.gameObject);
     }
-    public override void Attack(GameObject enemy)
-    {
-        EnemyHealth enemyHealth = enemy.GetComponentInChildren<EnemyHealth>(); ;
 
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = this.transform.position + new Vector3(0, 0.9f, 0);
-        sphere.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-        sphere.AddComponent<Rigidbody>().AddForce((enemy.transform.position - this.transform.position).normalized * bulletSpeed);
-        Destroy(sphere, 2.0f);
-        enemyHealth.GetDamage(attackPower);
-    }
+   
    
 }

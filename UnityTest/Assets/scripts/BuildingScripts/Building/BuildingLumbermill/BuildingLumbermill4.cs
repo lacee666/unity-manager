@@ -5,13 +5,15 @@ using UnityEngine;
 public class BuildingLumbermill4 : BuildingLumbermill {
 
     private float startTime;
-
+    private void Awake()
+    {
+        cost = 140;
+    }
     void Start()
     {
         level = 3;
-        cost = 100;
         startTime = Time.time;
-        generateWoodPerSecond = 12;
+        generateWoodPerSecond = 9;
         secondsOfUpdate = 3.0f;
 
     }
@@ -25,6 +27,7 @@ public class BuildingLumbermill4 : BuildingLumbermill {
         }
 
     }
+
     public override void Upgrade()
     {
         Deselect();

@@ -32,7 +32,7 @@ public class LumbermillResearch : MonoBehaviour, IPointerClickHandler
             playerResources.Gold -= upgradeCost;
             playerResources.lumbermillLevel += 1;
             this.GetComponentInChildren<TextMeshProUGUI>().text = "Lumbermill upgrade(" + (playerResources.lumbermillLevel + 1) + "): " + upgradeCost + " gold";
-            text.text = "Cost: " + BuildingCosts.FarmCost(playerResources.lumbermillLevel).ToString();
+            text.text = "Cost: " + BuildingCosts.LumbermillCost(playerResources.lumbermillLevel).ToString();
         }
     }
 }

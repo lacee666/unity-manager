@@ -5,22 +5,22 @@ using UnityEngine;
 public class BuildingWorkerFarm3 : BuildingWorker
 {
     private float startTime;
-    // Use this for initialization
+    private void Awake()
+    {
+        cost = 150;
+    }
     void Start()
     {
         level = 2;
-        cost = 100;
         startTime = Time.time;
         generateGoldPerSecond = 12;
         secondsOfUpdate = 3.0f;
-        //Debug.Log("Level3 farm spawned.");
     }
 
-    // Update is called once per frame
     void Update()
     {
         float elapsedTime = Time.time - startTime;
-       // Debug.Log(elapsedTime);
+
         if (elapsedTime >= secondsOfUpdate)
         {
             playerResources.Gold += generateGoldPerSecond;

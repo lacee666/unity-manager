@@ -6,22 +6,24 @@ public class BuildingWorkerFarm4 : BuildingWorker
 {
 
     private float startTime;
-    // Use this for initialization
+
+    private void Awake()
+    {
+        cost = 200;
+    }
     void Start()
     {
         level = 3;
-        cost = 130;
+
         startTime = Time.time;
         generateGoldPerSecond = 15;
         secondsOfUpdate = 3.0f;
-        //Debug.Log("Level4 farm spawned.");
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         float elapsedTime = Time.time - startTime;
-        //Debug.Log(elapsedTime);
         if (elapsedTime >= secondsOfUpdate)
         {
             playerResources.Gold += generateGoldPerSecond;

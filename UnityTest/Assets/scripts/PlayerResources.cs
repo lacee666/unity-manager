@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerResources : MonoBehaviour {
 
-    private int gold = 11700;
-    private int wood = 11200;
+    private int gold = 400;
+    private int wood = 120;
     private int capacity = 0;
     private int maxCapacity = 1;
 
@@ -22,6 +22,7 @@ public class PlayerResources : MonoBehaviour {
     public int maxLumbermillLevel = 3;
 
     private UpperBarGui upperBarGui;
+    private float startTime = 0.0f;
 
     public int Gold
     {
@@ -87,7 +88,20 @@ public class PlayerResources : MonoBehaviour {
 	void Start () {
         upperBarGui = GameObject.Find("UpperBarGuiHolder").GetComponent<UpperBarGui>();
 	}
+    void Update()
+    {
 
+        float elapsedTime = Time.time - startTime;
+        if (elapsedTime >= 3.0f)
+        {
+            gold += 2;
+            startTime = Time.time;
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            gold += 100;
+        }
+    }
     private void LateUpdate()
     {
         upperBarGui.UpdateUpperBarGui(gold, wood, capacity, maxCapacity);

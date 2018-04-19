@@ -23,10 +23,11 @@ public class BaseBuilding : MonoBehaviour {
         get { return level; }
     }
 
-    protected int cost = 0;
+    public int cost = 0;
     public int Cost
     {
         get { return cost; }
+        set { cost = value; }
     }
     protected bool selected = false;
     public bool Selected
@@ -44,12 +45,11 @@ public class BaseBuilding : MonoBehaviour {
     {
         if (selected)
         {
-
             OnSelection();
         }
         else
         {
-            Deselect();
+            //Deselect();
         }
     }
 

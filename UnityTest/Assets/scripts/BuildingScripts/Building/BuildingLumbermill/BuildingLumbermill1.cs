@@ -6,14 +6,16 @@ public class BuildingLumbermill1 : BuildingLumbermill
 {
 
     private float startTime;
-
+    private void Awake()
+    {
+        cost = 40;
+    }
     void Start()
     {
         level = 0;
-        cost = 20;
         upgradeCost = 50;
         startTime = Time.time;
-        generateWoodPerSecond = 3;
+        generateWoodPerSecond = 1;
         secondsOfUpdate = 3.0f;
 
     }
@@ -27,6 +29,7 @@ public class BuildingLumbermill1 : BuildingLumbermill
         }
 
     }
+
     public override void Upgrade()
     {
         BuildingInformation bi = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>();

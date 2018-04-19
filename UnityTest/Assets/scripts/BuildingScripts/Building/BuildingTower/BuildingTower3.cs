@@ -5,14 +5,17 @@ using UnityEngine;
 public class BuildingTower3 : BuildingTower
 {
 
-
+    private void Awake()
+    {
+        cost = 120;
+    }
     void Start()
     {
         level = 2;
-        cost = 120;
         attackPower = 120;
         aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
         bulletSpeed = 500f;
+        bullet = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>().Find("bullet");
     }
 
     void Update()
@@ -29,10 +32,6 @@ public class BuildingTower3 : BuildingTower
     {
         if (attackTime <= 0.0f)
         {
-            //System.Random rnd = new System.Random();
-            //int r = rnd.Next(enemies.Count);
-
-
             if (aiHolder.enemies.Count == 0)
             {
                 return;
@@ -68,16 +67,5 @@ public class BuildingTower3 : BuildingTower
         Destroy(go.GetComponent<BuildingStats>());
         Destroy(this.gameObject);
     }
-    public virtual void Attack(GameObject enemy)
-    {
-        EnemyHealth enemyHealth = enemy.GetComponentInChildren<EnemyHealth>(); ;
-
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = this.transform.position + new Vector3(0, 0.9f, 0);
-        sphere.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-        sphere.AddComponent<Rigidbody>().AddForce((enemy.transform.position - this.transform.position).normalized * bulletSpeed);
-        Destroy(sphere, 2.0f);
-        enemyHealth.GetDamage(attackPower);
-    }
-   
+    
 }

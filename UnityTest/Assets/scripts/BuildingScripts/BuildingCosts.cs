@@ -34,19 +34,19 @@ public static class BuildingCosts {
         {
             case 0:
                 {
-                    return 100;
+                    return 80;
                 }
             case 1:
                 {
-                    return 150;
+                    return 120;
                 }
             case 2:
                 {
-                    return 220;
+                    return 150;
                 }
             case 3:
                 {
-                    return 300;
+                    return 200;
                 }
             default: return 10000;
         }
@@ -57,20 +57,20 @@ public static class BuildingCosts {
         {
             case 0:
                 {
-                    return 80;
+                    return 50;
                 }
             case 1:
                 {
-                    return 120;
+                    return 80;
                 }
             case 2:
                 {
 
-                    return 170;
+                    return 120;
                 }
             case 3:
                 {
-                    return 220;
+                    return 150;
                 }
             default: return 10000;
         }
@@ -81,7 +81,7 @@ public static class BuildingCosts {
         {
             case 0:
                 {
-                    return 30;
+                    return 40;
                 }
             case 1:
                 {
@@ -90,11 +90,11 @@ public static class BuildingCosts {
             case 2:
                 {
 
-                    return 120;
+                    return 100;
                 }
             case 3:
                 {
-                    return 150;
+                    return 140;
                 }
             default: return 10000;
         }

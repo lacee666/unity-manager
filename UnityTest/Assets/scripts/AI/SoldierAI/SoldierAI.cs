@@ -53,10 +53,7 @@ public class SoldierAI : MonoBehaviour {
         {
             animator.Play("idle");
         }
-        else
-        {
-            Debug.Log("walk");           
-        }
+
 
         if(target == null)
         {

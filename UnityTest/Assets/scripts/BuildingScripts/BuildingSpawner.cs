@@ -7,25 +7,29 @@ public class BuildingSpawner : MonoBehaviour {
     PlayerResources playerResources;
     BuildingInformation buildingInformation;
     Building building;
-    private bool currentlyBuilding = false;
+    //tempopary holder for building
     private GameObject holdBuilding;
+    private bool currentlyBuilding = false;
+    
     private string[] farmNames = { "farm_house_lvl1", "farm_house_lvl2", "farm_house_lvl3", "farm_house_lvl4" };
     private string[] towerNames = { "tower_lvl1", "tower_lvl2", "tower_lvl3", "tower_lvl4" };
     private string[] lumbermillNames = { "lumbermill_lvl1", "lumbermill_lvl2", "lumbermill_lvl3", "lumbermill_lvl4" };
     public LayerMask buildingMask = 8;
+
+    //this decides what type of building we are spawning: 1-farm, 2-tower, 3-lumbermill, 4-barracks
     private int buildingType = 0;
-    // Use this for initialization
     void Start () {
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
-        holdBuilding = null;
         buildingInformation = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>();
+        holdBuilding = null;       
         building = new Building();
 
     }
 	
-	// Update is called once per frame
+
 	void Update () {
         
+        // if not currentlyBuilding then we can place the holdBuilding, type 1..4
         if (!currentlyBuilding)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -36,13 +40,13 @@ public class BuildingSpawner : MonoBehaviour {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit = new RaycastHit();
 
-                    //excluding buildings so we hit the ground
+                    //excluding buildings so we definitely hit the ground
                     if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
                     {
-                        //Debug.Log("Before: " + hit.collider.gameObject.name);
                         if (hit.collider.gameObject.name.Equals("Ground"))
                         {
                             buildingType = 1;
+                            //holdBuilding usage
                             SpawnHolder(hit);
                         }
                     }
@@ -53,14 +57,11 @@ public class BuildingSpawner : MonoBehaviour {
                 building = buildingInformation.Find(towerNames[playerResources.towerLevel]);
                 if (building != null)
                 {
-
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit = new RaycastHit();
 
-                    //excluding buildings so we hit the ground
                     if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
                     {
-                        //Debug.Log("Before: " + hit.collider.gameObject.name);
                         if (hit.collider.gameObject.name.Equals("Ground"))
                         {
                             buildingType = 2;
@@ -78,10 +79,8 @@ public class BuildingSpawner : MonoBehaviour {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit = new RaycastHit();
 
-                    //excluding buildings so we hit the ground
                     if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
                     {
-                        //Debug.Log("Before: " + hit.collider.gameObject.name);
                         if (hit.collider.gameObject.name.Equals("Ground"))
                         {
                             buildingType = 3;
@@ -99,10 +98,8 @@ public class BuildingSpawner : MonoBehaviour {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit = new RaycastHit();
 
-                    //excluding buildings so we hit the ground
                     if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << buildingMask.value)))
                     {
-                        //Debug.Log("Before: " + hit.collider.gameObject.name);
                         if (hit.collider.gameObject.name.Equals("Ground"))
                         {
                             buildingType = 4;
@@ -112,6 +109,7 @@ public class BuildingSpawner : MonoBehaviour {
                 }
             }
         }
+        //else we can place the building down if ground is accessible
         else
         {
             if(holdBuilding != null)
@@ -149,19 +147,20 @@ public class BuildingSpawner : MonoBehaviour {
                     }                                     
                 }                                         
             }
-            if (Input.GetKeyDown(KeyCode.Tab))
+           
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (holdBuilding != null)
             {
-                if(holdBuilding != null)
-                {
-                    Destroy(holdBuilding);
-                }
-                currentlyBuilding = false;
+                Destroy(holdBuilding);
             }
-        }		
-	}
+            currentlyBuilding = false;
+        }
+    }
 
  
-    //the building following the mouse
+    //the building following the mouse on the Ground
     void FollowMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -175,41 +174,36 @@ public class BuildingSpawner : MonoBehaviour {
         }
         
     }
-    
+    //farm spawn
     void Spawn(GameObject buildingTemp)
     {
-        int cost = 0;
-        cost = BuildingCosts.FarmCost(playerResources.farmLevel);
-        
+        int cost = -1;
         switch (playerResources.farmLevel)
         {
             case 0:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm1>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm1>().Cost;
                     break;
                 }
             case 1:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm2>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm2>().Cost;
                     break;
                 }
             case 2:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm3>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm3>().Cost;
                     break;
                 }
             case 3:
                 {
                     buildingTemp.AddComponent<BuildingWorkerFarm4>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingWorkerFarm4>().Cost;
                     break;
                 }
             default: break;
         }
-        
+        cost = buildingTemp.GetComponent<BaseBuilding>().Cost;
+
         if (playerResources.Gold >= cost)
         {
             playerResources.Gold -= cost;
@@ -227,8 +221,9 @@ public class BuildingSpawner : MonoBehaviour {
     }
     void SpawnBarracks(GameObject buildingTemp)
     {
-        int cost = BuildingCosts.BarracksCost();
+        
         buildingTemp.AddComponent<BuildingBarracks>().enabled = true;
+        int cost = buildingTemp.GetComponent<BaseBuilding>().Cost;
         if (playerResources.Gold >= cost)
         {
             playerResources.Gold -= cost;
@@ -243,9 +238,6 @@ public class BuildingSpawner : MonoBehaviour {
     }
     void SpawnLumbermill(GameObject buildingTemp)
     {
-        int cost = 0;
-        cost = BuildingCosts.LumbermillCost(playerResources.lumbermillLevel);
-
         switch (playerResources.lumbermillLevel)
         {
             case 0:
@@ -270,7 +262,7 @@ public class BuildingSpawner : MonoBehaviour {
                 }
             default: break;
         }
-
+        int cost = buildingTemp.GetComponent<BaseBuilding>().Cost;
         if (playerResources.Gold >= cost)
         {
             playerResources.Gold -= cost;
@@ -285,38 +277,33 @@ public class BuildingSpawner : MonoBehaviour {
     }
     void SpawnTower(GameObject buildingTemp)
     {
-        int cost = 0;
-        cost = BuildingCosts.TowerCost(playerResources.towerLevel);
+
         
         switch (playerResources.towerLevel)
         {
             case 0:
                 {
                     buildingTemp.AddComponent<BuildingTower1>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingTower1>().Cost;
                     break;
                 }
             case 1:
                 {
                     buildingTemp.AddComponent<BuildingTower2>().enabled = true;
-                    // cost = buildingTemp.GetComponent<BuildingTower2>().Cost;
                     break;
                 }
             case 2:
                 {
                     buildingTemp.AddComponent<BuildingTower3>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingTower3>().Cost;
                     break;
                 }
             case 3:
                 {
                     buildingTemp.AddComponent<BuildingTower4>().enabled = true;
-                   // cost = buildingTemp.GetComponent<BuildingTower4>().Cost;
                     break;
                 }
             default: break;
         }
-        
+        int cost = buildingTemp.GetComponent<BaseBuilding>().Cost;
         if (playerResources.Gold >= cost)
         {
             playerResources.Gold -= cost;
@@ -340,9 +327,6 @@ public class BuildingSpawner : MonoBehaviour {
         holdBuilding.AddComponent<BoxCollider>();
         holdBuilding.GetComponent<SphereCollider>().isTrigger = true;
 
-        //holdBuilding.GetComponent<Renderer>().material.color = Color.red;
         currentlyBuilding = true;
-
-        //Debug.Log("Building found");
     }
 }

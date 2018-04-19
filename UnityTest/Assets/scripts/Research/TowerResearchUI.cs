@@ -32,7 +32,7 @@ public class TowerResearchUI : MonoBehaviour, IPointerClickHandler
             playerResources.Gold -= upgradeCost;
             playerResources.towerLevel += 1;
             this.GetComponentInChildren<TextMeshProUGUI>().text = "Tower upgrade(" + (playerResources.towerLevel+1) + "): " + upgradeCost + " gold";
-            text.text = "Cost: " + BuildingCosts.FarmCost(playerResources.lumbermillLevel).ToString();
+            text.text = "Cost: " + BuildingCosts.TowerCost(playerResources.towerLevel).ToString();
         }
     }
 }

@@ -15,7 +15,6 @@ public class FarmResearchUI : MonoBehaviour, IPointerClickHandler
         
         playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
         this.GetComponentInChildren<TextMeshProUGUI>().text = "Farm upgrade(" + (playerResources.towerLevel + 1) + "): " + upgradeCost + " gold";
-
         text = GameObject.Find("farm_upgrade_ui/cost").GetComponent<TextMeshProUGUI>();
         text.text = "Cost: " + BuildingCosts.FarmCost(playerResources.farmLevel).ToString();
     }

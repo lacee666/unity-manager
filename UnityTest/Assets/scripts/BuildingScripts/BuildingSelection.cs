@@ -45,22 +45,27 @@ public class BuildingSelection : MonoBehaviour {
                 {
                     focus.GetComponent<BaseBuilding>().Selected = false;
                     focus.GetComponent<BaseBuilding>().SelectionUpdate();
+                    DeleteUI();
                 }
             }      
         }        
         else if(Input.GetKeyUp(KeyCode.Tab))
         {
             if (focus != null)
-            {           
+            {
+                Debug.Log("FOCUS TAB: " + focus.name);
                 focus.GetComponent<BaseBuilding>().Selected = false;
                 focus.GetComponent<BaseBuilding>().SelectionUpdate();
-                DeleteUI();
+                
             }
+            DeleteUI();
         }
         if(focus != null && buildingInformationUI != null)
         {
             buildingInformationUI.transform.position = Camera.main.WorldToScreenPoint(focus.transform.position);
         }
+          
+        
     }
     public void PopupUI()
     {
@@ -138,6 +143,7 @@ public class BuildingSelection : MonoBehaviour {
     {
         if (buildingInformationUI != null)
         {
+            Debug.Log("UI DELTEED");
             buildingInformationUI.SetActive(false);
         }      
     }

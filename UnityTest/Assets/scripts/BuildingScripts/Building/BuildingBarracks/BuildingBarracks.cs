@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class BuildingBarracks : BaseBuilding {
 
-    private PlayerResources playerResources;
     private Building prefab;
-	// Use this for initialization
-	void Start () {
-        playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
+
+    private void Awake()
+    {
         cost = 50;
+    }
+    void Start () {
+        playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
         upgradeCost = 60;
 		prefab = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>().Find("soldier");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
     public override void OnDestruction()
     {
 
@@ -26,7 +24,7 @@ public class BuildingBarracks : BaseBuilding {
     {
 
     }
-    public void Upgrade()
+    public override void Upgrade()
     {
         Debug.Log("Spawning soldier");
         StartCoroutine("SpawnSoldier");

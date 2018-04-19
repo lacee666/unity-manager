@@ -11,10 +11,6 @@ public class BuildingLumbermill : BaseBuilding {
         upgradeCost = 60;
     }
 
-    /*public virtual void Upgrade()
-    {
-
-    }*/
     public override void OnDestruction()
     {
         

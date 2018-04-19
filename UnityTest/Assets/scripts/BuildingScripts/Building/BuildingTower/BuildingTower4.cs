@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BuildingTower4 : BuildingTower
 {
-
+    private void Awake()
+    {
+        cost = 150;
+    }
     void Start()
     {
         attackPower = 200;
@@ -12,6 +15,7 @@ public class BuildingTower4 : BuildingTower
         cost = 150;
         aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
         bulletSpeed = 500f;
+        bullet = GameObject.Find("BuildingInformation").GetComponent<BuildingInformation>().Find("bullet");
     }
 
     void Update()
@@ -21,18 +25,14 @@ public class BuildingTower4 : BuildingTower
         {
             attackTime -= Time.deltaTime;
             AttackEnemy();
-
         }
 
     }
+
     public void AttackEnemy()
     {
         if (attackTime <= 0.0f)
         {
-            //System.Random rnd = new System.Random();
-            //int r = rnd.Next(enemies.Count);
-
-
             if (aiHolder.enemies.Count == 0)
             {
                 return;
@@ -62,17 +62,6 @@ public class BuildingTower4 : BuildingTower
     {
         Deselect();
     }
-    public virtual void Attack(GameObject enemy)
-    {
-        EnemyHealth enemyHealth = enemy.GetComponentInChildren<EnemyHealth>(); ;
-
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = this.transform.position + new Vector3(0, 0.9f, 0);
-        sphere.transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
-        sphere.GetComponent<Renderer>().material.color = Color.black;
-        sphere.AddComponent<Rigidbody>().AddForce((enemy.transform.position - this.transform.position).normalized * bulletSpeed);
-        Destroy(sphere, 2.0f);
-        enemyHealth.GetDamage(attackPower);
-    }
+ 
   
 }
