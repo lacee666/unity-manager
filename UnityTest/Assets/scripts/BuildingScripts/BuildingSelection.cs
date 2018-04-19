@@ -88,7 +88,7 @@ public class BuildingSelection : MonoBehaviour {
         }
         else
         {           
-            text.SetText("Upgrade" + focus.GetComponent<BaseBuilding>().Cost);
+            text.SetText("Upgrade" + focus.GetComponent<BaseBuilding>().UpgradeCost);
             /*
             BaseBuilding bws = focus.GetComponent<BaseBuilding>();
             if (playerResources.Gold < bws.Cost || playerResources.lumbermillLevel <= bws.Level)
@@ -100,7 +100,7 @@ public class BuildingSelection : MonoBehaviour {
             if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
             {
                 BuildingWorker bw = focus.GetComponent<BuildingWorker>();
-                if (playerResources.Gold < bw.Cost || playerResources.farmLevel <= bw.Level)
+                if (playerResources.Gold < bw.UpgradeCost || playerResources.farmLevel <= bw.Level)
                 {
                     GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
@@ -108,7 +108,7 @@ public class BuildingSelection : MonoBehaviour {
             else if (focus.GetComponent<BaseBuilding>() is BuildingTower)
             {
                 BuildingTower bw = focus.GetComponent<BuildingTower>();
-                if (playerResources.Gold < bw.Cost || playerResources.towerLevel <= bw.Level)
+                if (playerResources.Gold < bw.UpgradeCost || playerResources.towerLevel <= bw.Level)
                 {
                     GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
@@ -116,7 +116,7 @@ public class BuildingSelection : MonoBehaviour {
             else if (focus.GetComponent<BaseBuilding>() is BuildingLumbermill)
             {
                 BuildingLumbermill bw = focus.GetComponent<BuildingLumbermill>();
-                if (playerResources.Gold < bw.Cost || playerResources.lumbermillLevel <= bw.Level)
+                if (playerResources.Gold < bw.UpgradeCost || playerResources.lumbermillLevel <= bw.Level)
                 {
                     GameObject.Find("upgrade/upgrade_text").GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
@@ -162,8 +162,10 @@ public class BuildingSelection : MonoBehaviour {
             */          
             if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
             {
+                Debug.Log("before Upgraded farm");
                 if (playerResources.Gold >= focus.GetComponent<BuildingWorker>().UpgradeCost && playerResources.farmLevel > focus.GetComponent<BuildingWorker>().Level)
                 {
+                    Debug.Log("Upgraded farm" + focus.GetComponent<BuildingWorker>().UpgradeCost);
                     playerResources.Gold -= focus.GetComponent<BuildingWorker>().UpgradeCost;
                     focus.GetComponent<BuildingWorker>().Upgrade();
                     DeleteUI();

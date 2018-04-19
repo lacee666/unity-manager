@@ -9,6 +9,7 @@ public class BuildingLumbermill : BaseBuilding {
     {
         secondsOfUpdate = 3.0f;
         upgradeCost = 60;
+
     }
 
     public override void OnDestruction()

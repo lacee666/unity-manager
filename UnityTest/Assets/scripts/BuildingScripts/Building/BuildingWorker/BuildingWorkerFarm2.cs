@@ -9,6 +9,7 @@ public class BuildingWorkerFarm2 : BuildingWorker
     private void Awake()
     {
         cost = 120;
+        upgradeCost = 80;
     }
     void Start()
     {

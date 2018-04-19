@@ -10,6 +10,7 @@ public class BuildingWorkerFarm4 : BuildingWorker
     private void Awake()
     {
         cost = 200;
+        upgradeCost = 150;
     }
     void Start()
     {

@@ -17862,7 +17862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1823143763}
   image: {fileID: 198759403}
-  maxHealth: 2500
+  maxHealth: 1600
 --- !u!114 &869850984
 MonoBehaviour:
   m_ObjectHideFlags: 0

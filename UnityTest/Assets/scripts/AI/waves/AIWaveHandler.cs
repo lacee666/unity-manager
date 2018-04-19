@@ -63,6 +63,7 @@ public class AIWaveHandler : MonoBehaviour {
     {
         int r = Random.Range(0, 3);
         waveUI.NotifyWaveUI(r);
+        //i = 13;
         count = CalculateCount(i);
         i++;
         SpawnEnemies(spawnplaces[r], count);

@@ -7,6 +7,7 @@ public class BuildingTower4 : BuildingTower
     private void Awake()
     {
         cost = 150;
+        upgradeCost = 150;
     }
     void Start()
     {

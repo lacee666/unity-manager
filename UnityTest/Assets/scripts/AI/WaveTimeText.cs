@@ -16,6 +16,6 @@ public class WaveTimeText : MonoBehaviour {
 
     void Update()
     {
-        text.text = "Next wave in: " + aiWaveHandler.WaveTime.ToString("F0");
+        text.text = (aiWaveHandler.i-1) + ". wave in: " + aiWaveHandler.WaveTime.ToString("F0");
     }
 }

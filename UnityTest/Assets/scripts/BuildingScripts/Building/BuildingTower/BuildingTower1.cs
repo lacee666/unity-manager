@@ -9,6 +9,7 @@ public class BuildingTower1 : BuildingTower {
     private void Awake()
     {
         cost = 50;
+        upgradeCost = 50;
     }
     void Start()
     {

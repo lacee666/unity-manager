@@ -9,6 +9,7 @@ public class BuildingWorkerFarm1 : BuildingWorker {
     private void Awake()
     {
         cost = 80;
+        upgradeCost = 50;
     }
     void Start () {
         startTime = Time.time;

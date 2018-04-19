@@ -8,6 +8,7 @@ public class BuildingLumbermill2 : BuildingLumbermill {
     private void Awake()
     {
         cost = 70;
+        upgradeCost = 50;
     }
     void Start()
     {
