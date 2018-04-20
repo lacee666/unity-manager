@@ -371,23 +371,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fe000100
-    m_LastClickedID: 65790
-    m_ExpandedIDs: a212fcff7c13fcff0a16fcffe617fcfff21cfcffcc1dfcff5a20fcff3622fcff9efbffff00000000e63f00005c4200007afe00006e040100
+    m_SelectedIDs: 68380300
+    m_LastClickedID: 211048
+    m_ExpandedIDs: 10d6f6ffc8d6f6ff56d9f6ff32dbf6fff4e5f6ffaae6f6ff38e9f6ff14ebf6ff8e3effff76bbffff78bbffffcac8ffffd2c8ffff72d5ffff28e3ffffd2e3ffff60e6ffff3ce8ffff9efbffff00000000886f0000d8d5020026e10200ce3b03004842030010490300
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: XPText
+      m_OriginalName: XPText
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -17562
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -424,14 +424,14 @@ MonoBehaviour:
     height: 627
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 0
-  lastFramingTime: 5551.424711641453
+  lastFramingTime: 5398.844991920636
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 530.56, y: 198.87494, z: -34.783417}
+    m_Target: {x: 632.29346, y: 324.32056, z: 43.274292}
     speed: 2
-    m_Value: {x: 530.56, y: 198.87494, z: -34.783417}
+    m_Value: {x: 632.29346, y: 324.32056, z: 43.274292}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -455,13 +455,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.12592898, y: -0.031973887, z: 0.0037923723, w: -0.9916095}
+    m_Target: {x: -0.0782004, y: 0.026191372, z: -0.0024227863, w: -0.9966926}
     speed: 2
-    m_Value: {x: -0.12592898, y: -0.031973887, z: 0.0037923723, w: -0.9916095}
+    m_Value: {x: -0.07819245, y: 0.026188709, z: -0.00242254, w: -0.99659127}
   m_Size:
-    m_Target: 614.5175
+    m_Target: 844.77344
     speed: 2
-    m_Value: 614.5175
+    m_Value: 844.77344
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -575,7 +575,7 @@ MonoBehaviour:
     x: 283
     y: 92
     width: 1134
-    height: 544
+    height: 627
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &17
 MonoBehaviour:
@@ -616,18 +616,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/scripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Laci\New Dolgok\Game Development\unityprojs\Tests\unitytest18\UnityTest
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 643}
-    m_SelectedIDs: 56350000
-    m_LastClickedID: 13654
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: da2a0000
+    m_LastClickedID: 10970
     m_ExpandedIDs: 00000000da2a0000dc2b0000f62b0000ce2c0000302e0000662f0000f42f0000fe300000643100007e310000523200005832000066320000ea320000f6320000263300004635000056350000e23500005e360000d2360000d636000036370000483700009e460000a0460000a2460000a4460000a646000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -681,10 +681,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: fe000100
-    m_LastClickedInstanceID: 65790
+    m_SelectedInstanceIDs: 8e3effff
+    m_LastClickedInstanceID: -49522
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 042b0000bc280000f63e000000000000c86dffffac370000
+    m_ExpandedInstanceIDs: 042b0000bc280000f63e000000000000c86dffffac370000b0370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -765,7 +765,7 @@ MonoBehaviour:
     width: 499
     height: 926
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 109.95508}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 218

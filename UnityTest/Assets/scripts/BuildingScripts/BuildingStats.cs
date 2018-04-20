@@ -48,7 +48,7 @@ public class BuildingStats : MonoBehaviour {
         {
             renderer.material.color = Color.red;
             canSpawn = false;
-             Debug.Log("Entered a building");
+            //Debug.Log("Entered a building");
         }
     }
     private void OnCollisionExit(Collision other)
@@ -57,7 +57,7 @@ public class BuildingStats : MonoBehaviour {
         {
             renderer.material.color = Color.green;
             canSpawn = true;
-             Debug.Log("Exited a building");
+            //Debug.Log("Exited a building");
         }
     }
 }

@@ -49,6 +49,7 @@ public class AIWaveHandler : MonoBehaviour {
             }
         }else
         {
+            //Debug.Log("Enemies: " + enemies.Count);
             if (enemies.Count <= 0)
             {
                 waveHappening = false;

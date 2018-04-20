@@ -504,6 +504,7 @@
     <Compile Include="Assets\scripts\Research\LumbermillResearch.cs" />
     <Compile Include="Assets\scripts\Research\TowerResearchUI.cs" />
     <Compile Include="Assets\scripts\UpperBarGui.cs" />
+    <Compile Include="Assets\XpUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />

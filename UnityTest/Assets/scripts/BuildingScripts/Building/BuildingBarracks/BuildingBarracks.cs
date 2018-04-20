@@ -26,7 +26,7 @@ public class BuildingBarracks : BaseBuilding {
     }
     public override void Upgrade()
     {
-        Debug.Log("Spawning soldier");
+        //Debug.Log("Spawning soldier");
         StartCoroutine("SpawnSoldier");
     }
 

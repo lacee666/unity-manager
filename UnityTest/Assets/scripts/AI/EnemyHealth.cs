@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour {
 
     private AIHolder aiHolder;
     public Transform camera;
+    private PlayerResources playerResources;
     [SerializeField]
     public Image image;
     private float armor = 2f;
@@ -29,12 +30,14 @@ public class EnemyHealth : MonoBehaviour {
         currentHealth = maxHealth;
         camera = Camera.main.transform;
         aiHolder = GameObject.Find("AIHolder").GetComponent<AIHolder>();
+        playerResources = GameObject.Find("CameraTarget").GetComponent<PlayerResources>();
 
-	}
+    }
 	
 	void Update () {
 		if (currentHealth <= 0) {
             aiHolder.enemies.Remove(this.transform.parent.gameObject);
+            playerResources.Xp += 5;
 			Destroy (this.transform.root.gameObject);
 		}
 	}

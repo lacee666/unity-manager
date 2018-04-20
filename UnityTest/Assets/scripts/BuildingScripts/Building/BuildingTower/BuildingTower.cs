@@ -32,7 +32,7 @@ public class BuildingTower : BaseBuilding {
     }
     public void Attack(GameObject enemy)
     {
-        Debug.Log(enemy.name);
+        //Debug.Log(enemy.name);
         EnemyHealth enemyHealth = enemy.GetComponentInChildren<EnemyHealth>(); ;
 
         GameObject sphere = Instantiate(bullet.prefab, this.transform.position, Quaternion.identity) as GameObject;

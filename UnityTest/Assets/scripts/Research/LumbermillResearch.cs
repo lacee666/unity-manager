@@ -28,7 +28,7 @@ public class LumbermillResearch : MonoBehaviour, IPointerClickHandler
 
         if (playerResources.Gold >= upgradeCost && playerResources.lumbermillLevel < playerResources.maxLumbermillLevel)
         {
-            Debug.Log("Farm upgraded.");
+            //Debug.Log("Farm upgraded.");
             playerResources.Gold -= upgradeCost;
             playerResources.lumbermillLevel += 1;
             this.GetComponentInChildren<TextMeshProUGUI>().text = "Lumbermill upgrade(" + (playerResources.lumbermillLevel + 1) + "): " + upgradeCost + " gold";

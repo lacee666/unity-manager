@@ -24,6 +24,21 @@ public class PlayerResources : MonoBehaviour {
     private UpperBarGui upperBarGui;
     private float startTime = 0.0f;
 
+    private int playerLevel;
+
+    public int PlayerLevel
+    {
+        get { return playerLevel; }
+        set { playerLevel = value; }
+    }
+
+    private int xp;
+    public int Xp
+    {
+        get { return xp; }
+        set { xp = value; }
+    }
+
     public int Gold
     {
         get { return gold; }
@@ -86,6 +101,8 @@ public class PlayerResources : MonoBehaviour {
     }
   
 	void Start () {
+        xp = 0;
+        playerLevel = 1;
         upperBarGui = GameObject.Find("UpperBarGuiHolder").GetComponent<UpperBarGui>();
 	}
     void Update()

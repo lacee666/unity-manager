@@ -147,19 +147,22 @@ public class SoldierAI : MonoBehaviour {
     {
        
         EnemyHealth enemyHealth = enemy.GetComponentInChildren<EnemyHealth>(); ;
-       
-        enemyHealth.GetDamage(attackPower);
-        if (enemyHealth.CurrentHealth <= 0)
+       if(enemyHealth != null)
         {
-            animator.Play("walk");
-            attacking = false;
-            aiHolder.enemies.Remove(enemy);
+            enemyHealth.GetDamage(attackPower);
+            if (enemyHealth.CurrentHealth <= 0)
+            {
+                animator.Play("walk");
+                attacking = false;
+                aiHolder.enemies.Remove(enemy);
+            }
+            else if (enemyHealth == null)
+            {
+                animator.Play("walk");
+                attacking = false;
+            }
         }
-        else if(enemyHealth == null)
-        {
-            animator.Play("walk");
-            attacking = false;
-        }
+     
     }
    
 }

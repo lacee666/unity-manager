@@ -53,7 +53,7 @@ public class BuildingSelection : MonoBehaviour {
         {
             if (focus != null)
             {
-                Debug.Log("FOCUS TAB: " + focus.name);
+                //Debug.Log("FOCUS TAB: " + focus.name);
                 focus.GetComponent<BaseBuilding>().Selected = false;
                 focus.GetComponent<BaseBuilding>().SelectionUpdate();
                 
@@ -143,7 +143,7 @@ public class BuildingSelection : MonoBehaviour {
     {
         if (buildingInformationUI != null)
         {
-            Debug.Log("UI DELTEED");
+            //Debug.Log("UI DELTEED");
             buildingInformationUI.SetActive(false);
         }      
     }
@@ -162,10 +162,10 @@ public class BuildingSelection : MonoBehaviour {
             */          
             if (focus.GetComponent<BaseBuilding>() is BuildingWorker)
             {
-                Debug.Log("before Upgraded farm");
+                //Debug.Log("before Upgraded farm");
                 if (playerResources.Gold >= focus.GetComponent<BuildingWorker>().UpgradeCost && playerResources.farmLevel > focus.GetComponent<BuildingWorker>().Level)
                 {
-                    Debug.Log("Upgraded farm" + focus.GetComponent<BuildingWorker>().UpgradeCost);
+                    //Debug.Log("Upgraded farm" + focus.GetComponent<BuildingWorker>().UpgradeCost);
                     playerResources.Gold -= focus.GetComponent<BuildingWorker>().UpgradeCost;
                     focus.GetComponent<BuildingWorker>().Upgrade();
                     DeleteUI();
@@ -181,7 +181,7 @@ public class BuildingSelection : MonoBehaviour {
             }
             else if (focus.GetComponent<BaseBuilding>() is BuildingLumbermill)
             {
-                Debug.Log(playerResources.lumbermillLevel + ">" + focus.GetComponent<BuildingLumbermill>().Level);
+                //Debug.Log(playerResources.lumbermillLevel + ">" + focus.GetComponent<BuildingLumbermill>().Level);
                 if (playerResources.Gold >= focus.GetComponent<BuildingLumbermill>().UpgradeCost && playerResources.lumbermillLevel > focus.GetComponent<BuildingLumbermill>().Level)
                 {
                     playerResources.Gold -= focus.GetComponent<BuildingLumbermill>().UpgradeCost;
@@ -191,10 +191,10 @@ public class BuildingSelection : MonoBehaviour {
             }
             else if (focus.GetComponent<BaseBuilding>() is BuildingBarracks)
             {
-                Debug.Log("Barracks selected for upgrade");
+                //Debug.Log("Barracks selected for upgrade");
                 if (playerResources.Wood >= focus.GetComponent<BuildingBarracks>().UpgradeCost && playerResources.Capacity < playerResources.MaxCapacity)
                 {
-                    Debug.Log("Barracks selected for upgrade OK");
+                    //Debug.Log("Barracks selected for upgrade OK");
                     playerResources.Wood -= focus.GetComponent<BuildingBarracks>().UpgradeCost;
                     focus.GetComponent<BuildingBarracks>().Upgrade();
                     DeleteUI();

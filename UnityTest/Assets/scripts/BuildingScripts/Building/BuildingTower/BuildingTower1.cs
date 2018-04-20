@@ -51,7 +51,7 @@ public class BuildingTower1 : BuildingTower {
             if(enemy != null)
             {
                 attacking = true;      
-                Debug.Log("Can attack");
+                //Debug.Log("Can attack");
                 Attack(enemy);
                 attackTime = 1.0f;      
             }

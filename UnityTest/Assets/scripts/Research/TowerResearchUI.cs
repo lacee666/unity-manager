@@ -28,7 +28,7 @@ public class TowerResearchUI : MonoBehaviour, IPointerClickHandler
     {
         if (playerResources.Gold >= upgradeCost && playerResources.towerLevel < playerResources.maxTowerLevel)
         {
-            Debug.Log("Tower upgraded.");
+            //Debug.Log("Tower upgraded.");
             playerResources.Gold -= upgradeCost;
             playerResources.towerLevel += 1;
             this.GetComponentInChildren<TextMeshProUGUI>().text = "Tower upgrade(" + (playerResources.towerLevel+1) + "): " + upgradeCost + " gold";

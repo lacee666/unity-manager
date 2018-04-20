@@ -331,3 +331,4 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 1f677397da90b35403c5b04c5535155a Assembly-CSharp.dll:.BuildingTower
 34e025057ef78b1bf238460cdf6583a3 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.SimpleScript
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.XpUI
