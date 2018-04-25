@@ -28,7 +28,10 @@ public class BuildingSpawner : MonoBehaviour {
 	
 
 	void Update () {
-        
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
         // if not currentlyBuilding then we can place the holdBuilding, type 1..4
         if (!currentlyBuilding)
         {

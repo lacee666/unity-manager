@@ -24,6 +24,10 @@ public class BuildingSelection : MonoBehaviour {
     }
 	
 	void LateUpdate () {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
