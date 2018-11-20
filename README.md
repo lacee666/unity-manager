@@ -1,6 +1,8 @@
 # unity-manager
 Read the keyboard menupoint to know how to play the game.
 -----
+Executable found in ubuild folder
+-----
 There are 4 types of buildings:
 1. farm - it generates gold and can upgrade up to lvl4 and gives +1 capacity
 2. tower - it attacks enemies and can upgrade up to lvl4
